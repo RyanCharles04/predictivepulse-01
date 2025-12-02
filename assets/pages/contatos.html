@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Contatos - PredictivePulse</title>
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/contatos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- SDK do EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("kowaZYGoIlPuXISh3");
+        })();
+    </script>
+</head>
+<body class="contacts-page">
+    <!-- NAVBAR SOFISTICADA COM ÍCONES E JOGO -->
+    <header class="navbar">
+        <div class="brand">
+            <img src="/assets/img/logo-branca.png" alt="PredictivePulse Logo" class="logo-img" />
+        </div>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
+            <span class="menu-line"></span>
+            <span class="menu-line"></span>
+            <span class="menu-line"></span>
+        </button>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="/assets/pages/index.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                INÍCIO
+            </a>
+            <a href="/assets/pages/index.html" class="nav-item">
+                <i class="fas fa-building"></i>
+                EMPRESA
+            </a>
+            <a href="/assets/pages/servico.html" class="nav-item">
+                <i class="fas fa-cogs"></i>
+                SERVIÇOS
+            </a>
+            <a href="/assets/pages/contatos.html" class="nav-item active">
+                <i class="fas fa-envelope"></i>
+                CONTATO
+            </a>
+            <a href="/assets/pages/jogo.html" class="nav-item">
+                <i class="fas fa-gamepad"></i>
+                JOGO
+            </a>
+        </nav>
+
+        <!-- BOTÃO DE TEMA ESCURO/CLARO -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+            <i class="fas fa-moon"></i>
+            <span class="theme-text">MODO ESCURO</span>
+        </button>
+
+        <a class="area-cliente" href="/assets/pages/login.html">
+            <i class="fas fa-user-circle"></i>
+            ÁREA DO CLIENTE
+        </a>
+    </header>
+
+    <main>
+        <section class="contacts-hero">
+            <div class="container hero-content-contacts">
+                <h1>CONTATO</h1>
+                <p class="hero-subtitle">Entre em contato conosco para saber mais sobre nossas soluções de manutenção preditiva</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Suporte</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">+100</span>
+                        <span class="stat-label">Clientes</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">99%</span>
+                        <span class="stat-label">Satisfação</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="barra-top" aria-hidden="false">
+            <div class="item">EFICIÊNCIA</div>
+            <div class="item">MONITORAMENTO</div>
+            <div class="item">PREVENÇÃO</div>
+        </section>
+
+        <section class="contacts-content">
+            <div class="container">
+                <div class="contacts-grid">
+                    <!-- Formulário de Contato -->
+                    <div class="contact-form-section">
+                        <h2><i class="fas fa-paper-plane"></i> Envie sua mensagem</h2>
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-group">
+                                <label for="fullName">Nome completo *</label>
+                                <input type="text" id="fullName" name="fullName" placeholder="Seu nome completo" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">E-mail *</label>
+                                <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Telefone (opcional)</label>
+                                <input type="tel" id="phone" name="phone" placeholder="(00) 00000-0000">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject">Assunto *</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="" disabled selected>Selecione um assunto</option>
+                                    <option value="Orçamento">Solicitar Orçamento</option>
+                                    <option value="Informações">Mais Informações</option>
+                                    <option value="Suporte">Suporte Técnico</option>
+                                    <option value="Parceria">Proposta de Parceria</option>
+                                    <option value="Outro">Outro</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Mensagem *</label>
+                                <textarea id="message" name="message" placeholder="Sua mensagem..." rows="6" required></textarea>
+                            </div>
+
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-paper-plane"></i> ENVIAR MENSAGEM
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Informações de Contato -->
+                    <div class="contact-info-section">
+                        <h2><i class="fas fa-info-circle"></i> Informações de contato</h2>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <strong>E-mail</strong>
+                                    <p>predictivepulseofficial@gmail.com</p>
+                                    <span class="contact-note">Respondemos em até 24h</span>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <strong>Telefone</strong>
+                                    <p>+55 (21) 99834-5897</p>
+                                    <span class="contact-note">Segunda a Sexta, 8h às 18h</span>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <strong>Endereço</strong>
+                                    <p>Rua da Prosperidade, 57</p>
+                                    <span class="contact-note">Centro Industrial - RJ</span>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <strong>Horário Comercial</strong>
+                                    <p>08:00 - 18:00</p>
+                                    <span class="contact-note">Segunda a Sexta-feira</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-extra">
+                            <h3><i class="fas fa-headset"></i> Suporte especializado</h3>
+                            <p>Nossa equipe técnica está disponível para esclarecer dúvidas e oferecer suporte personalizado para sua empresa.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER COM LINK PARA JOGO -->
+    <footer id="contato" class="footer">
+        <div class="footer-main">
+            <div class="footer-container">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <!-- LOGO NO RODAPÉ -->
+                        <img src="/assets/img/logo-branca.png" alt="PredictivePulse Logo" class="footer-logo-img" />
+                        <p>PredictivePulse é uma startup brasileira especializada em manutenção preditiva. Utiliza sensores IoT, análise de vibração e inteligência artificial para antecipar falhas e aumentar a eficiência industrial. Sua plataforma digital facilita o acompanhamento dos equipamentos em tempo real, reduzindo custos e fortalecendo a produtividade.</p>
+                    </div>
+                    
+                    <div class="footer-links">
+                        <h4 class="footer-title-white">Links rápidos</h4>
+                        <ul>
+                            <li><a href="/assets/pages/index.html">INÍCIO</a></li>
+                            <li><a href="/assets/pages/index.html">EMPRESA</a></li>
+                            <li><a href="/assets/pages/servico.html">SERVIÇOS</a></li>
+                            <li><a href="/assets/pages/contatos.html">CONTATO</a></li>
+                            <li><a href="/assets/pages/jogo.html">JOGO</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-contact">
+                        <h4 class="footer-title-white">Informações de contato</h4>
+                        <ul>
+                            <li><i class="fas fa-envelope"></i> predictivepulseoficial@gmail.com</li>
+                            <li><i class="fas fa-phone"></i> +55 (21) 99834-5897</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Rua da Prosperidade, 57</li>
+                            <li><i class="fas fa-clock"></i> 08:00 - 18:00</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-container">
+                <p>© 2024 PredictivePulse. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/script.js"></script>
+    <script src="/assets/js/contatos.js"></script>
+</body>
+</html>

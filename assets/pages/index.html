@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>PredictivePulse</title>
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="home-page">
+    <header class="navbar">
+        <div class="brand">
+            <!-- LOGO NO TOPO -->
+            <img src="/assets/img/logo-branca.png" alt="PredictivePulse Logo" class="logo-img" />
+        </div>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
+            <span class="menu-line"></span>
+            <span class="menu-line"></span>
+            <span class="menu-line"></span>
+        </button>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="#home" class="nav-item active">
+                <i class="fas fa-home"></i>
+                INÍCIO
+            </a>
+            <a href="#empresa" class="nav-item">
+                <i class="fas fa-building"></i>
+                EMPRESA
+            </a>
+            <a href="/assets/pages/servico.html" class="nav-item">
+                <i class="fas fa-cogs"></i>
+                SERVIÇOS
+            </a>
+            <a href="/assets/pages/contatos.html" class="nav-item">
+                <i class="fas fa-envelope"></i>
+                CONTATOS
+            </a>
+            <a href="/assets/pages/jogo.html" class="nav-item">
+                <i class="fas fa-gamepad"></i>
+                JOGO
+            </a>
+        </nav>
+
+        <!-- BOTÃO DE TEMA ESCURO/CLARO -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+            <i class="fas fa-moon"></i>
+            <span class="theme-text">MODO ESCURO</span>
+        </button>
+
+        <a class="area-cliente" href="/assets/pages/login.html">
+            <i class="fas fa-user-circle"></i>
+            ÁREA DO CLIENTE
+        </a>
+    </header>
+
+    <main id="home">
+        <section class="hero">
+            <img src="/assets/img/header-tech.png" alt="técnico" class="hero-bg" />
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1>EVITE PROBLEMAS<br /><span>ANTES DE OCORREREM</span></h1>
+                <p>Preveja falhas com nossa plataforma de diagnóstico industrial em tempo real.</p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="/assets/pages/servico.html">
+                        <i class="fas fa-rocket"></i> Saiba mais
+                    </a>
+                    <a class="btn btn-secondary" href="/assets/pages/contatos.html">
+                        <i class="fas fa-calendar-alt"></i> Agende Demonstração
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="barra-top" aria-hidden="false">
+            <div class="item">EFICIÊNCIA</div>
+            <div class="item">MONITORAMENTO</div>
+            <div class="item">PREVENÇÃO</div>
+        </section>
+
+        <section id="servicos" class="servicos">
+            <div class="section-header">
+                <h2 class="section-title">NOSSOS SERVIÇOS</h2>
+                <p class="section-subtitle">Soluções inteligentes para manutenção preditiva industrial</p>
+            </div>
+            
+            <div class="servicos-grid">
+                <div class="servico">
+                    <div class="servico-emoji">📊</div>
+                    <h3>MONITORAMENTO EM TEMPO REAL</h3>
+                    <p>Sensores IoT coletam dados de vibração, temperatura e ruído continuamente.</p>
+                    <div class="servico-features">
+                        <span><i class="fas fa-check"></i> Dados precisos</span>
+                        <span><i class="fas fa-check"></i> Análise contínua</span>
+                    </div>
+                </div>
+                <div class="servico">
+                    <div class="servico-emoji">🤖</div>
+                    <h3>INTELIGÊNCIA ARTIFICIAL</h3>
+                    <p>Algoritmos preditivos identificam padrões de falha antes que aconteçam.</p>
+                    <div class="servico-features">
+                        <span><i class="fas fa-check"></i> Machine Learning</span>
+                        <span><i class="fas fa-check"></i> Análise preditiva</span>
+                    </div>
+                </div>
+                <div class="servico">
+                    <div class="servico-emoji">🚨</div>
+                    <h3>ALERTAS AUTOMÁTICOS</h3>
+                    <p>Notificações instantâneas para tomada de ação preventiva.</p>
+                    <div class="servico-features">
+                        <span><i class="fas fa-check"></i> Notificações em tempo real</span>
+                        <span><i class="fas fa-check"></i> Multiplataforma</span>
+                    </div>
+                </div>
+                <div class="servico">
+                    <div class="servico-emoji">📈</div>
+                    <h3>RELATÓRIOS PREDITIVOS</h3>
+                    <p>Análises detalhadas para otimização da manutenção.</p>
+                    <div class="servico-features">
+                        <span><i class="fas fa-check"></i> Dashboards interativos</span>
+                        <span><i class="fas fa-check"></i> Insights valiosos</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="empresa" class="quem-somos">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">QUEM SOMOS</h2>
+                    <p class="section-subtitle">Inovação e tecnologia a serviço da indústria brasileira</p>
+                </div>
+                
+                <div class="conteudo">
+                    <img src="/assets/img/trabalhador-industria.png" alt="trabalhador" />
+                    <div class="texto">
+                        <p>A <strong class="highlight">PredictivePulse</strong> surgiu da necessidade real de transformar o cenário da manutenção industrial no Brasil. Diante de falhas recorrentes, altos custos corretivos e processos pouco eficientes, nosso time idealizou uma solução capaz de prever problemas antes que eles interrompam a produção.</p>
+                        
+                        <div class="valores">
+                            <div class="valor-item">
+                                <i class="fas fa-microchip"></i>
+                                <div>
+                                    <h4>Tecnologia</h4>
+                                    <p>Soluções baseadas em IA e IoT</p>
+                                </div>
+                            </div>
+                            <div class="valor-item">
+                                <i class="fas fa-leaf"></i>
+                                <div>
+                                    <h4>Sustentabilidade</h4>
+                                    <p>Redução de desperdícios e energia</p>
+                                </div>
+                            </div>
+                            <div class="valor-item">
+                                <i class="fas fa-bullseye"></i>
+                                <div>
+                                    <h4>Precisão</h4>
+                                    <p>Análises com alta acurácia</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p class="missao">Hoje, somos uma startup inovadora comprometida com tecnologia, sustentabilidade e precisão – pilares que orientam cada etapa do nosso desenvolvimento.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer id="contato" class="footer">
+            <div class="footer-main">
+                <div class="footer-container">
+                    <div class="footer-content">
+                        <div class="footer-brand">
+                            <!-- LOGO NO RODAPÉ -->
+                            <img src="/assets/img/logo-branca.png" alt="PredictivePulse Logo" class="footer-logo-img" />
+                            <p>PredictivePulse é uma startup brasileira especializada em manutenção preditiva. Utiliza sensores IoT, análise de vibração e inteligência artificial para antecipar falhas e aumentar a eficiência industrial. Sua plataforma digital facilita o acompanhamento dos equipamentos em tempo real, reduzindo custos e fortalecendo a produtividade.</p>
+                        </div>
+                        
+                        <div class="footer-links">
+                            <h4 class="footer-title-white">Links rápidos</h4>
+                            <ul>
+                                <li><a href="#home">INÍCIO</a></li>
+                                <li><a href="#empresa">EMPRESA</a></li>
+                                <li><a href="/assets/pages/servico.html">SERVIÇOS</a></li>
+                                <li><a href="/assets/pages/contatos.html">CONTATO</a></li>
+                                <li><a href="/assets/pages/jogo.html">JOGO</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer-contact">
+                            <h4 class="footer-title-white">Informações de contato</h4>
+                            <ul>
+                                <li>📧 predictivepulseoficial@gmail.com</li>
+                                <li>📞 +55 (21) 99834-5897</li>
+                                <li>📍 Rua da Prosperidade, 57</li>
+                                <li>🕐 08:00 - 18:00</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-container">
+                    <p>© 2024 PredictivePulse. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

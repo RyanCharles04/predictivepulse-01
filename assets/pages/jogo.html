@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PredictivePulse - Jogo Preditivo</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/jogo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="brand">
+            <img src="/assets/img/logo-branca.png" alt="PredictivePulse Logo" class="logo-img" />
+        </div>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
+            <span class="menu-line"></span>
+            <span class="menu-line"></span>
+            <span class="menu-line"></span>
+        </button>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="/assets/pages/index.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                INÍCIO
+            </a>
+            <a href="/assets/pages/index.html" class="nav-item">
+                <i class="fas fa-building"></i>
+                EMPRESA
+            </a>
+            <a href="/assets/pages/servico.html" class="nav-item">
+                <i class="fas fa-cogs"></i>
+                SERVIÇOS
+            </a>
+            <a href="/assets/pages/contatos.html" class="nav-item">
+                <i class="fas fa-envelope"></i>
+                CONTATOS
+            </a>
+            <a href="/assets/pages/jogo.html" class="nav-item active">
+                <i class="fas fa-gamepad"></i>
+                JOGO
+            </a>
+        </nav>
+
+        <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+            <i class="fas fa-moon"></i>
+            <span class="theme-text">MODO ESCURO</span>
+        </button>
+
+        <a class="area-cliente" href="/assets/pages/login.html">
+            <i class="fas fa-user-circle"></i>
+            ÁREA DO CLIENTE
+        </a>
+    </header>
+
+    <main class="jogo-simple-container">
+        <!-- Hero Minimalista -->
+        <section class="jogo-simple-hero">
+            <div class="container">
+                <h1>JOGO PREDITIVO</h1>
+                <p class="subtitle">Aprenda sobre manutenção industrial de forma interativa</p>
+            </div>
+        </section>
+
+        <!-- Seção Principal do Jogo -->
+        <section class="jogo-main-section">
+            <div class="container">
+                <div class="jogo-card">
+                    <div class="jogo-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    
+                    <div class="jogo-content">
+                        <h2>PRONTO PARA JOGAR?</h2>
+                        <p>Clique no botão abaixo para acessar o simulador completo de manutenção preditiva. Desafie-se a manter uma fábrica operando sem falhas!</p>
+                        
+                        <div class="jogo-actions">
+                            <!-- LINK PARA O JOGO REAL - Você pode alterar a URL aqui -->
+                            <a href="https://polvilho.itch.io/predict-pulse" target="_blank" class="jogo-btn">
+                                <i class="fas fa-play"></i>
+                                <span>ACESSAR JOGO COMPLETO</span>
+                            </a>
+                            
+                            <p class="jogo-note">
+                                <i class="fas fa-info-circle"></i>
+                                O jogo abre em uma nova janela. Certifique-se de que os pop-ups estão habilitados.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="footer-container">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <img src="/assets/img/logo-branca.png" alt="PredictivePulse Logo" class="footer-logo-img" />
+                        <p>PredictivePulse é uma startup brasileira especializada em manutenção preditiva. Utiliza sensores IoT, análise de vibração e inteligência artificial para antecipar falhas e aumentar a eficiência industrial.</p>
+                    </div>
+                    
+                    <div class="footer-links">
+                        <h4 class="footer-title-white">Links rápidos</h4>
+                        <ul>
+                            <li><a href="/assets/pages/index.html">INÍCIO</a></li>
+                            <li><a href="/assets/pages/index.html">EMPRESA</a></li>
+                            <li><a href="/assets/pages/servico.html">SERVIÇOS</a></li>
+                            <li><a href="/assets/pages/contatos.html">CONTATO</a></li>
+                            <li><a href="/assets/pages/jogo.html">JOGO</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-contact">
+                        <h4 class="footer-title-white">Informações de contato</h4>
+                        <ul>
+                            <li>📧 predictivepulseoficial@gmail.com</li>
+                            <li>📞 +55 (21) 99834-5897</li>
+                            <li>📍 Rua da Prosperidade, 57</li>
+                            <li>🕐 08:00 - 18:00</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-container">
+                <p>© 2024 PredictivePulse. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/script.js"></script>
+    <script src="/assets/js/jogo.js"></script>
+</body>
+</html>
