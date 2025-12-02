@@ -47,7 +47,8 @@ body{font-family:Inter, system-ui, Arial, sans-serif;background:var(--white);col
 .brand{
   display:flex;
   align-items:center;
-  gap:12px
+  gap:12px;
+  z-index: 1002;
 }
 .logo-img {
   height: 50px;
@@ -132,6 +133,7 @@ body{font-family:Inter, system-ui, Arial, sans-serif;background:var(--white);col
   backdrop-filter: blur(10px);
   font-family: 'Inter', system-ui, Arial, sans-serif;
   white-space: nowrap;
+  z-index: 1001;
 }
 
 .theme-toggle:hover {
@@ -184,6 +186,7 @@ body{font-family:Inter, system-ui, Arial, sans-serif;background:var(--white);col
   text-transform: uppercase;
   font-size: 0.9rem;
   white-space: nowrap;
+  z-index: 1001;
 }
 .area-cliente:hover{
   background: #e0760b;
@@ -208,7 +211,7 @@ body{font-family:Inter, system-ui, Arial, sans-serif;background:var(--white);col
   color:#fff;
   font-size:20px;
   cursor:pointer;
-  z-index:1001;
+  z-index:1002;
   flex-direction: column;
   gap: 4px;
   padding: 10px;
@@ -934,6 +937,7 @@ body,
   .navbar {
     padding: 0 15px;
     height: 70px;
+    gap: 8px;
   }
   
   /* Esconde logo desktop, mostra logo mobile */
@@ -947,6 +951,56 @@ body,
     width: auto;
   }
   
+  /* CORREÇÃO DO LAYOUT DA NAVBAR MOBILE */
+  .brand {
+    order: 1;
+    flex: 1;
+  }
+  
+  .theme-toggle {
+    order: 3;
+    padding: 8px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    justify-content: center;
+    margin: 0 5px;
+  }
+  
+  .area-cliente {
+    order: 4;
+    padding: 8px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    justify-content: center;
+    margin-right: 0;
+  }
+  
+  .nav-toggle {
+    display: flex;
+    order: 2;
+    margin-left: 0;
+  }
+  
+  .theme-text {
+    display: none;
+  }
+  
+  .theme-icon-mobile {
+    display: block;
+    font-size: 1.2rem;
+  }
+  
+  .cliente-text {
+    display: none;
+  }
+  
+  .cliente-mobile {
+    display: block;
+    font-size: 1.2rem;
+  }
+  
   /* MENU MOBILE - CORREÇÃO IMPORTANTE */
   .nav-links{
     display: none;
@@ -955,7 +1009,7 @@ body,
     left: 0;
     right: 0;
     background: linear-gradient(135deg, var(--blue-dark), var(--blue-royal));
-    padding: 20px;
+    padding: 20px 15px;
     flex-direction: column;
     gap: 10px;
     width: 100%;
@@ -978,8 +1032,11 @@ body,
     text-align: left;
     justify-content: flex-start;
     width: 100%;
-    font-size: 1.1rem;
+    font-size: 1rem;
     background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
 
   .nav-item:hover {
@@ -995,86 +1052,52 @@ body,
     color: var(--orange);
   }
   
-  /* Texto do menu mobile */
   .nav-text {
     display: inline-block;
   }
 
-  .nav-toggle{
-    display: flex;
-    order: 2;
-    width: 44px;
-    height: 44px;
-  }
-  
-  /* Botão tema mobile */
-  .theme-toggle {
-    order: 3;
-    padding: 10px;
-    width: 50px;
-    height: 50px;
-    justify-content: center;
-    margin-left: auto;
-  }
-  
-  .theme-text {
-    display: none;
-  }
-  
-  .theme-icon-mobile {
-    display: block;
-    font-size: 1.2rem;
-  }
-  
-  /* Área do cliente mobile */
-  .area-cliente {
-    order: 1;
-    padding: 10px 15px;
-    font-size: 0;
-    width: 50px;
-    height: 50px;
-    justify-content: center;
-    margin-right: 10px;
-  }
-  
-  .cliente-text {
-    display: none;
-  }
-  
-  .cliente-mobile {
-    display: block;
-    font-size: 1.2rem;
-  }
-  
+  /* HERO MOBILE */
   .hero{
     min-height:500px;
     height: 85vh;
   }
   
   .hero-content {
-    padding: 0 30px;
+    padding: 0 25px;
     text-align: center;
   }
   
   .hero-content h1 {
     text-align: center;
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+  
+  .hero-content h1 span {
+    font-size: clamp(2.2rem, 7vw, 3.2rem);
+    display: block;
+    margin-top: 5px;
   }
   
   .hero-content p {
     text-align: center;
     max-width: 100%;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    padding: 0 10px;
   }
   
   .hero-actions {
     flex-direction: column;
     align-items: center;
     gap: 15px;
+    padding: 0 10px;
   }
   
   .btn {
     width: 100%;
     max-width: 300px;
     justify-content: center;
+    padding: 16px 25px;
+    font-size: 0.95rem;
   }
   
   /* Serviços mobile */
@@ -1086,21 +1109,30 @@ body,
     grid-template-columns: 1fr;
     max-width: 400px;
     gap: 20px;
+    padding: 0;
   }
   
   .servico {
     min-height: auto;
     padding: 25px 20px;
+    margin: 0 auto;
+    width: 100%;
   }
   
   .servico h3 {
     min-height: auto;
     margin-bottom: 15px;
+    font-size: 1.1rem;
   }
   
   .servico-emoji {
     min-height: 50px;
     margin-bottom: 15px;
+    font-size: 2.5rem;
+  }
+  
+  .servico p {
+    font-size: 0.95rem;
   }
   
   /* Quem somos mobile */
@@ -1111,19 +1143,29 @@ body,
   .conteudo {
     flex-direction: column;
     text-align: center;
+    padding: 0 10px;
+  }
+  
+  .conteudo img {
+    max-width: 100%;
+    margin: 0 auto 30px;
   }
   
   .conteudo .texto p {
     text-align: center;
+    font-size: 0.95rem;
   }
   
   .valores {
     grid-template-columns: 1fr;
+    gap: 15px;
+    margin: 25px 0;
   }
   
   .valor-item {
-    justify-content: center;
+    justify-content: flex-start;
     text-align: left;
+    padding: 12px;
   }
   
   .missao {
@@ -1132,6 +1174,8 @@ body,
     border-top: 4px solid var(--blue-royal);
     padding-left: 0;
     padding-top: 20px;
+    margin: 25px 0;
+    font-size: 0.95rem;
   }
   
   /* Footer mobile */
@@ -1158,101 +1202,13 @@ body,
   .footer-links li,
   .footer-contact li {
     justify-content: center;
-  }
-  
-  .section-title {
-    font-size: 2rem;
-  }
-  
-  .section-subtitle {
-    font-size: 1.1rem;
-  }
-  
-  .barra-top {
-    padding: 15px 5px;
-  }
-  
-  .item {
-    min-width: 120px;
-    font-size: 1rem;
-    padding: 8px 5px;
-  }
-}
-
-/* MOBILE SMALL (até 600px) */
-@media (max-width: 600px) {
-  .navbar {
-    padding: 0 10px;
-    height: 60px;
-  }
-  
-  .logo-mobile {
-    height: 35px;
-  }
-  
-  .nav-toggle {
-    padding: 8px;
-  }
-  
-  .menu-line {
-    width: 22px;
-  }
-  
-  .nav-links {
-    top: 60px;
-  }
-  
-  .hero{
-    min-height:400px;
-    height: 80vh;
-  }
-  
-  .hero-content {
-    padding: 0 20px;
-  }
-  
-  .hero-content h1 {
-    font-size: clamp(1.8rem, 6vw, 2.5rem);
-    line-height: 1.2;
-    margin-bottom: 20px;
-  }
-  
-  .hero-content h1 span {
-    font-size: clamp(2rem, 7vw, 2.8rem);
-  }
-  
-  .hero-content p {
-    font-size: clamp(0.9rem, 3vw, 1.1rem);
-    margin-bottom: 30px;
-  }
-  
-  .hero-actions {
-    margin-bottom: 30px;
-  }
-  
-  .btn {
-    padding: 14px 25px;
-    font-size: 0.9rem;
-  }
-  
-  .servicos {
-    padding: 50px 10px;
-  }
-  
-  .servico {
-    padding: 20px 15px;
-  }
-  
-  .servico h3 {
-    font-size: 1.1rem;
-  }
-  
-  .servico p {
+    text-align: center;
     font-size: 0.9rem;
   }
   
   .section-header {
     margin-bottom: 40px;
+    padding: 0 10px;
   }
   
   .section-title {
@@ -1267,6 +1223,128 @@ body,
   
   .section-subtitle {
     font-size: 1rem;
+    padding: 0;
+  }
+  
+  .barra-top {
+    padding: 15px 10px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .item {
+    min-width: 100%;
+    font-size: 1rem;
+    padding: 10px;
+  }
+}
+
+/* MOBILE SMALL (até 600px) */
+@media (max-width: 600px) {
+  .navbar {
+    padding: 0 10px;
+    height: 60px;
+  }
+  
+  .logo-mobile {
+    height: 35px;
+  }
+  
+  .theme-toggle,
+  .area-cliente {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    padding: 6px;
+  }
+  
+  .nav-toggle {
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+  }
+  
+  .menu-line {
+    width: 22px;
+  }
+  
+  .nav-links {
+    top: 60px;
+    padding: 15px 10px;
+  }
+  
+  .hero{
+    min-height:400px;
+    height: 80vh;
+  }
+  
+  .hero-content {
+    padding: 0 20px;
+  }
+  
+  .hero-content h1 {
+    font-size: clamp(1.8rem, 6vw, 2.2rem);
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  
+  .hero-content h1 span {
+    font-size: clamp(2rem, 7vw, 2.4rem);
+  }
+  
+  .hero-content p {
+    font-size: clamp(0.9rem, 3vw, 1rem);
+    margin-bottom: 30px;
+    padding: 0;
+  }
+  
+  .hero-actions {
+    margin-bottom: 30px;
+    gap: 12px;
+  }
+  
+  .btn {
+    padding: 14px 20px;
+    font-size: 0.85rem;
+  }
+  
+  .servicos {
+    padding: 50px 10px;
+  }
+  
+  .servico {
+    padding: 20px 15px;
+    max-width: 100%;
+  }
+  
+  .servico h3 {
+    font-size: 1rem;
+  }
+  
+  .servico p {
+    font-size: 0.85rem;
+  }
+  
+  .servico-features span {
+    font-size: 0.8rem;
+  }
+  
+  .section-header {
+    margin-bottom: 35px;
+  }
+  
+  .section-title {
+    font-size: 1.6rem;
+  }
+  
+  .section-title::after {
+    width: 50px;
+    height: 2px;
+    bottom: -8px;
+  }
+  
+  .section-subtitle {
+    font-size: 0.9rem;
   }
   
   .quem-somos {
@@ -1274,16 +1352,26 @@ body,
   }
   
   .conteudo .texto {
-    font-size: 0.95rem;
-    padding: 0 10px;
+    font-size: 0.9rem;
+    padding: 0 5px;
+    min-width: unset;
   }
   
   .valor-item {
-    padding: 12px;
+    padding: 10px;
+    gap: 10px;
   }
   
   .valor-item i {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+  }
+  
+  .valor-item h4 {
+    font-size: 0.95rem;
+  }
+  
+  .valor-item p {
+    font-size: 0.8rem;
   }
   
   .footer-main {
@@ -1298,14 +1386,19 @@ body,
     gap: 25px;
   }
   
+  .footer-brand p {
+    font-size: 0.85rem;
+  }
+  
   .footer-links h4,
   .footer-contact h4 {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
   
   .footer-links li,
   .footer-contact li {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
   }
   
   .footer-bottom {
@@ -1313,18 +1406,16 @@ body,
   }
   
   .footer-bottom p {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
   
   .barra-top {
-    flex-direction: column;
+    padding: 12px 8px;
     gap: 8px;
-    padding: 15px 10px;
   }
   
   .item {
-    min-width: 100%;
-    padding: 10px;
+    padding: 8px;
     font-size: 0.9rem;
   }
 }
@@ -1341,8 +1432,22 @@ body,
   
   .theme-toggle,
   .area-cliente {
-    width: 45px;
-    height: 45px;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+  }
+  
+  .nav-toggle {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .menu-line {
+    width: 20px;
+  }
+  
+  .hero-content {
+    padding: 0 15px;
   }
   
   .hero-content h1 {
@@ -1358,12 +1463,12 @@ body,
   }
   
   .btn {
-    padding: 12px 20px;
-    font-size: 0.85rem;
+    padding: 12px 15px;
+    font-size: 0.8rem;
   }
   
   .section-title {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
   
   .servico {
@@ -1371,7 +1476,15 @@ body,
   }
   
   .servico h3 {
-    font-size: 1rem;
+    font-size: 0.95rem;
+  }
+  
+  .servico p {
+    font-size: 0.8rem;
+  }
+  
+  .servico-emoji {
+    font-size: 2rem;
   }
 }
 
@@ -1478,33 +1591,27 @@ body:not(.home-page) .navbar {
   }
 }
 
-/* FECHAR MENU AO CLICAR FORA */
+/* OVERLAY PARA FECHAR MENU MOBILE */
+.menu-overlay {
+  display: none;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
 @media (max-width: 768px) {
-  body::after {
-    content: '';
-    position: fixed;
-    top: 70px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 998;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-  }
-  
-  .nav-links.active ~ body::after {
+  .menu-overlay.active {
+    display: block;
     opacity: 1;
-    visibility: visible;
   }
   
-  /* Adicionar evento de clique no overlay */
-  body::after {
-    pointer-events: none;
-  }
-  
-  .nav-links.active ~ body::after {
-    pointer-events: auto;
+  .menu-overlay {
+    top: 60px;
   }
 }

@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Serviços | PredictivePulse</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../css/servico.css">
@@ -14,6 +14,7 @@
     <header class="navbar">
         <div class="brand">
             <img src="../img/logo-branca.png" alt="PredictivePulse Logo" class="logo-img" />
+            <img src="../img/logo-branca.png" alt="PredictivePulse" class="logo-mobile" />
         </div>
 
         <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
@@ -49,11 +50,13 @@
         <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema claro/escuro">
             <i class="fas fa-moon"></i>
             <span class="theme-text">MODO ESCURO</span>
+            <span class="theme-icon-mobile"><i class="fas fa-moon"></i></span>
         </button>
 
         <a class="area-cliente" href="login.html" aria-label="Área do cliente">
             <i class="fas fa-user-circle"></i>
-            <span class="area-cliente-text">ÁREA DO CLIENTE</span>
+            <span class="cliente-text">ÁREA DO CLIENTE</span>
+            <span class="cliente-mobile"><i class="fas fa-user-circle"></i></span>
         </a>
     </header>
 
@@ -61,7 +64,7 @@
     <section class="hero-services">
         <div class="hero-gradient"></div>
         <div class="hero-image-container">
-            <img src="../img/colaboradores-que-prestam-servicos-ao-sistema-hvac 1.png 1.png" 
+            <img src="../img/colaboradores-que-prestam-servicos-ao-sistema-hvac 1.png" 
                  class="hero-image" 
                  alt="Equipe especializada em manutenção preditiva industrial"
                  loading="lazy">
@@ -82,11 +85,11 @@
                 <div class="hero-cta">
                     <a href="#planos" class="cta-btn primary-btn">
                         <i class="fas fa-chart-line"></i>
-                        <span>VER SOLUÇÕES</span>
+                        <span class="btn-text">VER SOLUÇÕES</span>
                     </a>
                     <a href="contatos.html" class="cta-btn secondary-btn">
                         <i class="fas fa-calendar-alt"></i>
-                        <span>AGENDAR DEMO</span>
+                        <span class="btn-text">AGENDAR DEMO</span>
                     </a>
                 </div>
                 <div class="scroll-indicator">
@@ -134,7 +137,7 @@
                     </div>
                     <div class="card-footer">
                         <a href="contatos.html" class="learn-more">
-                            <span>Saiba mais</span>
+                            <span class="learn-text">Saiba mais</span>
                             <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
@@ -161,7 +164,7 @@
                     </div>
                     <div class="card-footer">
                         <a href="contatos.html" class="learn-more">
-                            <span>Saiba mais</span>
+                            <span class="learn-text">Saiba mais</span>
                             <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
@@ -184,7 +187,7 @@
                     </div>
                     <div class="card-footer">
                         <a href="contatos.html" class="learn-more">
-                            <span>Saiba mais</span>
+                            <span class="learn-text">Saiba mais</span>
                             <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
@@ -227,7 +230,7 @@
                         </ul>
                     </div>
                     <button class="plan-btn" onclick="window.location.href='contatos.html?plano=essencial'">
-                        <span>COMEÇAR AGORA</span>
+                        <span class="btn-plan-text">COMEÇAR AGORA</span>
                         <i class="fas fa-arrow-right"></i>
                     </button>
                 </div>
@@ -257,7 +260,7 @@
                         </ul>
                     </div>
                     <button class="plan-btn premium-btn" onclick="window.location.href='contatos.html?plano=profissional'">
-                        <span>ESCOLHER PLANO</span>
+                        <span class="btn-plan-text">ESCOLHER PLANO</span>
                         <i class="fas fa-arrow-right"></i>
                     </button>
                 </div>
@@ -283,7 +286,7 @@
                         </ul>
                     </div>
                     <button class="plan-btn" onclick="window.location.href='contatos.html?plano=empresarial'">
-                        <span>FALE CONOSCO</span>
+                        <span class="btn-plan-text">FALE CONOSCO</span>
                         <i class="fas fa-arrow-right"></i>
                     </button>
                 </div>
@@ -313,11 +316,11 @@
                     <div class="cta-actions">
                         <a href="contatos.html" class="action-btn primary-action">
                             <i class="fas fa-calendar-check"></i>
-                            <span>AGENDAR DEMONSTRAÇÃO</span>
+                            <span class="btn-action-text">AGENDAR DEMONSTRAÇÃO</span>
                         </a>
                         <a href="contatos.html" class="action-btn secondary-action">
                             <i class="fas fa-file-invoice-dollar"></i>
-                            <span>SOLICITAR ORÇAMENTO</span>
+                            <span class="btn-action-text">SOLICITAR ORÇAMENTO</span>
                         </a>
                     </div>
                     <div class="cta-stats">
@@ -381,6 +384,5 @@
     </footer>
 
     <script src="../script.js"></script>
-    <script src="../js/servico.js"></script>
 </body>
 </html>
