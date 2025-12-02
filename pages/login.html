@@ -9,10 +9,10 @@
 </head>
 <body>
     <!-- Botão Voltar para Home (fora do container de login) -->
-    <button id="backToHome" class="back-home-btn" title="Voltar para página inicial">
+    <a href="../index.html" id="backToHome" class="back-home-btn" title="Voltar para página inicial">
         <i class="fas fa-arrow-left"></i>
         <span>INICIO</span>
-    </button>
+    </a>
 
     <div class="login-container">
         <!-- Card de Login (padrão) -->
@@ -135,5 +135,21 @@
     <script src="../firebase/auth.js"></script>
 
     <script src="../js/login.js"></script>
+
+    <!-- Script para o botão de voltar -->
+    <script>
+        // Adiciona funcionalidade ao botão de voltar
+        document.addEventListener('DOMContentLoaded', function() {
+            const backButton = document.getElementById('backToHome');
+            
+            // Se o botão for um <button>, adiciona evento de clique
+            if (backButton.tagName === 'BUTTON') {
+                backButton.addEventListener('click', function() {
+                    window.location.href = '../index.html';
+                });
+            }
+            // Se for um <a>, já tem o href e funciona automaticamente
+        });
+    </script>
 </body>
 </html>
