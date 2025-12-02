@@ -3,15 +3,20 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
-    <title>PredictivePulse - Contatos</title>
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="../css/style.css" />
+    <title>Contatos - PredictivePulse</title>
+    <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="../css/contatos.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- SDK do EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("kowaZYGoIlPuXISh3");
+        })();
+    </script>
 </head>
 <body class="contacts-page">
-    <!-- HEADER COM MENU E BOTÃO DE TEMA -->
+    <!-- NAVBAR SOFISTICADA COM ÍCONES E JOGO -->
     <header class="navbar">
         <div class="brand">
             <img src="../img/logo-branca.png" alt="PredictivePulse Logo" class="logo-img" />
@@ -38,7 +43,7 @@
             </a>
             <a href="contatos.html" class="nav-item active">
                 <i class="fas fa-envelope"></i>
-                <span class="nav-text">CONTATOS</span>
+                <span class="nav-text">CONTATO</span>
             </a>
             <a href="jogo.html" class="nav-item">
                 <i class="fas fa-gamepad"></i>
@@ -60,160 +65,145 @@
         </a>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="contacts-hero">
-        <div class="hero-content-contacts">
-            <h1>FALE CONOSCO</h1>
-            <p class="hero-subtitle">Entre em contato com nossa equipe de especialistas e descubra como podemos transformar a manutenção da sua indústria</p>
-            
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">Suporte</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">98%</div>
-                    <div class="stat-label">Satisfação</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">1h</div>
-                    <div class="stat-label">Resposta</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">100+</div>
-                    <div class="stat-label">Clientes</div>
+    <main>
+        <section class="contacts-hero">
+            <div class="container hero-content-contacts">
+                <h1>CONTATO</h1>
+                <p class="hero-subtitle">Entre em contato conosco para saber mais sobre nossas soluções de manutenção preditiva</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Suporte</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">+100</span>
+                        <span class="stat-label">Clientes</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">99%</span>
+                        <span class="stat-label">Satisfação</span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CONTENT SECTION -->
-    <section class="contacts-content">
-        <div class="container">
-            <div class="contacts-grid">
-                <!-- FORMULÁRIO DE CONTATO -->
-                <div class="contact-form-section">
-                    <h2><i class="fas fa-paper-plane"></i> ENVIE UMA MENSAGEM</h2>
-                    <form class="contact-form" id="contactForm">
-                        <div id="form-message" class="form-message" style="display: none;"></div>
-                        
-                        <div class="form-group">
-                            <label for="name">NOME COMPLETO</label>
-                            <input type="text" id="name" name="name" required placeholder="Digite seu nome completo">
-                            <div class="field-error" id="name-error" style="display: none;"></div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">E-MAIL</label>
-                            <input type="email" id="email" name="email" required placeholder="seuemail@exemplo.com">
-                            <div class="field-error" id="email-error" style="display: none;"></div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="company">EMPRESA</label>
-                            <input type="text" id="company" name="company" required placeholder="Nome da sua empresa">
-                            <div class="field-error" id="company-error" style="display: none;"></div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">TELEFONE</label>
-                            <input type="tel" id="phone" name="phone" required placeholder="(XX) XXXXX-XXXX">
-                            <div class="field-error" id="phone-error" style="display: none;"></div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject">ASSUNTO</label>
-                            <select id="subject" name="subject" required>
-                                <option value="" disabled selected>Selecione o assunto</option>
-                                <option value="orcamento">Orçamento</option>
-                                <option value="suporte">Suporte Técnico</option>
-                                <option value="parceria">Parceria Comercial</option>
-                                <option value="dúvida">Dúvidas</option>
-                                <option value="outro">Outro</option>
-                            </select>
-                            <div class="field-error" id="subject-error" style="display: none;"></div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">MENSAGEM</label>
-                            <textarea id="message" name="message" rows="6" required placeholder="Descreva sua necessidade ou dúvida..."></textarea>
-                            <div class="field-error" id="message-error" style="display: none;"></div>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn" id="submitBtn">
-                            <i class="fas fa-paper-plane"></i> ENVIAR MENSAGEM
-                        </button>
-                    </form>
-                </div>
-                
-                <!-- INFORMAÇÕES DE CONTATO -->
-                <div class="contact-info-section">
-                    <h2><i class="fas fa-address-book"></i> INFORMAÇÕES DE CONTATO</h2>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
+        <section class="barra-top" aria-hidden="false">
+            <div class="item">EFICIÊNCIA</div>
+            <div class="item">MONITORAMENTO</div>
+            <div class="item">PREVENÇÃO</div>
+        </section>
+
+        <section class="contacts-content">
+            <div class="container">
+                <div class="contacts-grid">
+                    <!-- Formulário de Contato -->
+                    <div class="contact-form-section">
+                        <h2><i class="fas fa-paper-plane"></i> Envie sua mensagem</h2>
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-group">
+                                <label for="fullName">Nome completo *</label>
+                                <input type="text" id="fullName" name="fullName" placeholder="Seu nome completo" required>
                             </div>
-                            <div class="contact-details">
-                                <strong>ENDEREÇO</strong>
-                                <p>Rua da Prosperidade, 57</p>
-                                <p>São Paulo - SP, 01234-567</p>
-                                <span class="contact-note">Centro Empresarial</span>
+
+                            <div class="form-group">
+                                <label for="email">E-mail *</label>
+                                <input type="email" id="email" name="email" placeholder="seu@email.com" required>
                             </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
+
+                            <div class="form-group">
+                                <label for="phone">Telefone (opcional)</label>
+                                <input type="tel" id="phone" name="phone" placeholder="(00) 00000-0000">
                             </div>
-                            <div class="contact-details">
-                                <strong>TELEFONE</strong>
-                                <p>+55 (11) 99999-9999</p>
-                                <p>+55 (11) 3333-3333</p>
-                                <span class="contact-note">Segunda a Sexta, 8h às 18h</span>
+
+                            <div class="form-group">
+                                <label for="subject">Assunto *</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="" disabled selected>Selecione um assunto</option>
+                                    <option value="Orçamento">Solicitar Orçamento</option>
+                                    <option value="Informações">Mais Informações</option>
+                                    <option value="Suporte">Suporte Técnico</option>
+                                    <option value="Parceria">Proposta de Parceria</option>
+                                    <option value="Outro">Outro</option>
+                                </select>
                             </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
+
+                            <div class="form-group">
+                                <label for="message">Mensagem *</label>
+                                <textarea id="message" name="message" placeholder="Sua mensagem..." rows="6" required></textarea>
                             </div>
-                            <div class="contact-details">
-                                <strong>E-MAIL</strong>
-                                <p>contato@predictivepulse.com</p>
-                                <p>suporte@predictivepulse.com</p>
-                                <span class="contact-note">Resposta em até 1 hora útil</span>
+
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-paper-plane"></i> <span class="btn-text">ENVIAR MENSAGEM</span>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Informações de Contato -->
+                    <div class="contact-info-section">
+                        <h2><i class="fas fa-info-circle"></i> Informações de contato</h2>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <strong>E-mail</strong>
+                                    <p>predictivepulseofficial@gmail.com</p>
+                                    <span class="contact-note">Respondemos em até 24h</span>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-clock"></i>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <strong>Telefone</strong>
+                                    <p>+55 (21) 99834-5897</p>
+                                    <span class="contact-note">Segunda a Sexta, 8h às 18h</span>
+                                </div>
                             </div>
-                            <div class="contact-details">
-                                <strong>HORÁRIO DE ATENDIMENTO</strong>
-                                <p>Segunda a Sexta: 8h às 18h</p>
-                                <p>Sábado: 9h às 13h</p>
-                                <span class="contact-note">Plantão 24/7 para clientes</span>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <strong>Endereço</strong>
+                                    <p>Rua da Prosperidade, 57</p>
+                                    <span class="contact-note">Centro Industrial - RJ</span>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <strong>Horário Comercial</strong>
+                                    <p>08:00 - 18:00</p>
+                                    <span class="contact-note">Segunda a Sexta-feira</span>
+                                </div>
                             </div>
                         </div>
-                        
+
                         <div class="contact-extra">
-                            <h3><i class="fas fa-lightbulb"></i> AGENDE UMA DEMONSTRAÇÃO</h3>
-                            <p>Quer ver nossa plataforma em ação? Agende uma demonstração personalizada e veja como podemos otimizar sua operação.</p>
+                            <h3><i class="fas fa-headset"></i> Suporte especializado</h3>
+                            <p>Nossa equipe técnica está disponível para esclarecer dúvidas e oferecer suporte personalizado para sua empresa.</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- FOOTER -->
+    <!-- FOOTER COM LINK PARA JOGO -->
     <footer id="contato" class="footer">
         <div class="footer-main">
             <div class="footer-container">
                 <div class="footer-content">
                     <div class="footer-brand">
+                        <!-- LOGO NO RODAPÉ -->
                         <img src="../img/logo-branca.png" alt="PredictivePulse Logo" class="footer-logo-img" />
                         <p>PredictivePulse é uma startup brasileira especializada em manutenção preditiva. Utiliza sensores IoT, análise de vibração e inteligência artificial para antecipar falhas e aumentar a eficiência industrial. Sua plataforma digital facilita o acompanhamento dos equipamentos em tempo real, reduzindo custos e fortalecendo a produtividade.</p>
                     </div>
@@ -249,8 +239,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script src="../js/script.js"></script>
+    <script src="../script.js"></script>
     <script src="../js/contatos.js"></script>
 </body>
 </html>
