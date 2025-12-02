@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
     <title>PredictivePulse</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -10,8 +10,9 @@
 <body class="home-page">
     <header class="navbar">
         <div class="brand">
-            <!-- LOGO NO TOPO -->
+            <!-- LOGO NO TOPO - ADICIONADA VERSÃO MOBILE -->
             <img src="img/logo-branca.png" alt="PredictivePulse Logo" class="logo-img" />
+            <img src="img/logo-branca.png" alt="PredictivePulse" class="logo-mobile" />
         </div>
 
         <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
@@ -23,23 +24,23 @@
         <nav class="nav-links" id="navLinks">
             <a href="#home" class="nav-item active">
                 <i class="fas fa-home"></i>
-                INÍCIO
+                <span class="nav-text">INÍCIO</span>
             </a>
             <a href="#empresa" class="nav-item">
                 <i class="fas fa-building"></i>
-                EMPRESA
+                <span class="nav-text">EMPRESA</span>
             </a>
             <a href="pages/servico.html" class="nav-item">
                 <i class="fas fa-cogs"></i>
-                SERVIÇOS
+                <span class="nav-text">SERVIÇOS</span>
             </a>
             <a href="pages/contatos.html" class="nav-item">
                 <i class="fas fa-envelope"></i>
-                CONTATOS
+                <span class="nav-text">CONTATOS</span>
             </a>
             <a href="pages/jogo.html" class="nav-item">
                 <i class="fas fa-gamepad"></i>
-                JOGO
+                <span class="nav-text">JOGO</span>
             </a>
         </nav>
 
@@ -47,27 +48,34 @@
         <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
             <i class="fas fa-moon"></i>
             <span class="theme-text">MODO ESCURO</span>
+            <span class="theme-icon-mobile"><i class="fas fa-moon"></i></span>
         </button>
 
         <a class="area-cliente" href="pages/login.html">
             <i class="fas fa-user-circle"></i>
-            ÁREA DO CLIENTE
+            <span class="cliente-text">ÁREA DO CLIENTE</span>
+            <span class="cliente-mobile"><i class="fas fa-user-circle"></i></span>
         </a>
     </header>
 
     <main id="home">
         <section class="hero">
-            <img src="img/header-tech.png" alt="técnico" class="hero-bg" />
+            <!-- IMAGEM DE BACKGROUND COM SOURCE SET PARA RESPONSIVIDADE -->
+            <picture>
+                <source media="(max-width: 768px)" srcset="img/header-tech-mobile.jpg">
+                <source media="(min-width: 769px)" srcset="img/header-tech.png">
+                <img src="img/header-tech.png" alt="técnico" class="hero-bg" loading="lazy" />
+            </picture>
             <div class="hero-overlay"></div>
             <div class="hero-content">
                 <h1>EVITE PROBLEMAS<br /><span>ANTES DE OCORREREM</span></h1>
                 <p>Preveja falhas com nossa plataforma de diagnóstico industrial em tempo real.</p>
                 <div class="hero-actions">
                     <a class="btn btn-primary" href="pages/servico.html">
-                        <i class="fas fa-rocket"></i> Saiba mais
+                        <i class="fas fa-rocket"></i> <span class="btn-text">Saiba mais</span>
                     </a>
                     <a class="btn btn-secondary" href="pages/contatos.html">
-                        <i class="fas fa-calendar-alt"></i> Agende Demonstração
+                        <i class="fas fa-calendar-alt"></i> <span class="btn-text">Agende Demonstração</span>
                     </a>
                 </div>
             </div>
@@ -133,7 +141,12 @@
                 </div>
                 
                 <div class="conteudo">
-                    <img src="img/trabalhador-industria.png" alt="trabalhador" />
+                    <!-- IMAGEM RESPONSIVA -->
+                    <picture>
+                        <source media="(max-width: 768px)" srcset="img/trabalhador-industria-mobile.jpg">
+                        <source media="(min-width: 769px)" srcset="img/trabalhador-industria.png">
+                        <img src="img/trabalhador-industria.png" alt="trabalhador" loading="lazy" />
+                    </picture>
                     <div class="texto">
                         <p>A <strong class="highlight">PredictivePulse</strong> surgiu da necessidade real de transformar o cenário da manutenção industrial no Brasil. Diante de falhas recorrentes, altos custos corretivos e processos pouco eficientes, nosso time idealizou uma solução capaz de prever problemas antes que eles interrompam a produção.</p>
                         
@@ -191,10 +204,10 @@
                         <div class="footer-contact">
                             <h4 class="footer-title-white">Informações de contato</h4>
                             <ul>
-                                <li>📧 predictivepulseoficial@gmail.com</li>
-                                <li>📞 +55 (21) 99834-5897</li>
-                                <li>📍 Rua da Prosperidade, 57</li>
-                                <li>🕐 08:00 - 18:00</li>
+                                <li><i class="fas fa-envelope"></i> predictivepulseoficial@gmail.com</li>
+                                <li><i class="fas fa-phone"></i> +55 (21) 99834-5897</li>
+                                <li><i class="fas fa-map-marker-alt"></i> Rua da Prosperidade, 57</li>
+                                <li><i class="fas fa-clock"></i> 08:00 - 18:00</li>
                             </ul>
                         </div>
                     </div>

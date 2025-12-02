@@ -6,6 +6,19 @@
     <title>Login - PredictivePulse</title>
     <link rel="stylesheet" href="../css/login.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilo para remover sublinhado do botão -->
+    <style>
+        .back-home-btn {
+            text-decoration: none !important;
+        }
+        .back-home-btn:hover {
+            text-decoration: none !important;
+        }
+        .back-home-btn span {
+            text-decoration: none !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Botão Voltar para Home (fora do container de login) -->
@@ -135,21 +148,5 @@
     <script src="../firebase/auth.js"></script>
 
     <script src="../js/login.js"></script>
-
-    <!-- Script para o botão de voltar -->
-    <script>
-        // Adiciona funcionalidade ao botão de voltar
-        document.addEventListener('DOMContentLoaded', function() {
-            const backButton = document.getElementById('backToHome');
-            
-            // Se o botão for um <button>, adiciona evento de clique
-            if (backButton.tagName === 'BUTTON') {
-                backButton.addEventListener('click', function() {
-                    window.location.href = '../index.html';
-                });
-            }
-            // Se for um <a>, já tem o href e funciona automaticamente
-        });
-    </script>
 </body>
 </html>

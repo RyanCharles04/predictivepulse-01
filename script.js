@@ -1,4 +1,4 @@
-// script.js - Sistema de Tema ESCURO/CLARO corrigido
+// script.js - Sistema de Tema ESCURO/CLARO corrigido e MENU MOBILE FUNCIONAL
 document.addEventListener('DOMContentLoaded', function(){
     console.log('=== PREDICTIVEPULSE SCRIPT INICIALIZADO ===');
     
@@ -11,17 +11,31 @@ document.addEventListener('DOMContentLoaded', function(){
     const header = document.querySelector('.navbar');
     const menuLines = navToggle ? navToggle.querySelectorAll('.menu-line') : [];
     const navItems = document.querySelectorAll('.nav-item');
+    
+    console.log('🔍 Elementos encontrados:', {
+        navToggle: !!navToggle,
+        navLinks: !!navLinks,
+        header: !!header,
+        menuLines: menuLines.length,
+        navItems: navItems.length
+    });
 
     // ===== MENU MOBILE =====
     if (navToggle && navLinks) {
+        console.log('📱 Configurando menu mobile...');
+        
         navToggle.addEventListener('click', function(e) {
+            e.preventDefault();
             e.stopPropagation();
             
             const isOpen = navLinks.classList.contains('active');
+            console.log('🔄 Alternando menu:', isOpen ? 'FECHAR' : 'ABRIR');
             
             if (!isOpen) {
+                // ABRIR MENU
                 navLinks.classList.add('active');
                 navToggle.classList.add('active');
+                document.body.classList.add('menu-open');
                 
                 menuLines.forEach((line, index) => {
                     line.style.transition = 'all 0.3s ease';
@@ -29,14 +43,31 @@ document.addEventListener('DOMContentLoaded', function(){
                     if (index === 1) line.style.opacity = '0';
                     if (index === 2) line.style.transform = 'rotate(-45deg) translate(7px, -6px)';
                 });
+                
+                // Fechar ao clicar em um link
+                navItems.forEach(item => {
+                    item.addEventListener('click', closeMobileMenu, { once: true });
+                });
+                
+                // Fechar ao clicar fora
+                document.addEventListener('click', closeMenuOnClickOutside, { once: true });
+                document.addEventListener('keydown', closeMenuOnEscape);
+                
             } else {
+                // FECHAR MENU
                 closeMobileMenu();
             }
         });
     }
 
     function closeMobileMenu() {
-        if (navLinks) navLinks.classList.remove('active');
+        console.log('✖️ Fechando menu mobile...');
+        
+        if (navLinks) {
+            navLinks.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+        
         if (navToggle) {
             navToggle.classList.remove('active');
             menuLines.forEach(line => {
@@ -44,31 +75,58 @@ document.addEventListener('DOMContentLoaded', function(){
                 line.style.opacity = '1';
             });
         }
+        
+        // Remover listeners
+        document.removeEventListener('click', closeMenuOnClickOutside);
+        document.removeEventListener('keydown', closeMenuOnEscape);
+    }
+
+    function closeMenuOnClickOutside(e) {
+        if (navLinks && navToggle && 
+            !navLinks.contains(e.target) && 
+            !navToggle.contains(e.target)) {
+            closeMobileMenu();
+        }
+    }
+
+    function closeMenuOnEscape(e) {
+        if (e.key === 'Escape') {
+            closeMobileMenu();
+        }
     }
 
     // ===== HEADER SCROLL EFFECT =====
     if (header) {
         window.addEventListener('scroll', () => {
-            header.classList.toggle('scrolled', window.scrollY > 40);
+            const scrolled = window.scrollY > 40;
+            header.classList.toggle('scrolled', scrolled);
         });
-        if (window.scrollY > 40) header.classList.add('scrolled');
+        
+        // Verificar estado inicial
+        if (window.scrollY > 40) {
+            header.classList.add('scrolled');
+        }
     }
 
     // ===== RESPONSIVIDADE =====
     function handleResponsiveMenu() {
-        if (window.innerWidth > 900) {
+        if (window.innerWidth > 768) {
+            // DESKTOP - mostrar menu normalmente
             if (navLinks) {
-                navLinks.classList.add('active');
+                navLinks.classList.remove('active');
                 navLinks.style.display = 'flex';
+                navToggle.classList.remove('active');
+                document.body.classList.remove('menu-open');
             }
         } else {
-            if (navLinks && navLinks.classList.contains('active')) {
-                closeMobileMenu();
+            // MOBILE - esconder menu inicialmente
+            if (navLinks && !navLinks.classList.contains('active')) {
+                navLinks.style.display = 'none';
             }
-            if (navLinks) navLinks.style.display = 'none';
         }
     }
 
+    // Verificar ao carregar e redimensionar
     window.addEventListener('resize', handleResponsiveMenu);
     handleResponsiveMenu();
 
@@ -90,7 +148,10 @@ document.addEventListener('DOMContentLoaded', function(){
                         behavior: 'smooth'
                     });
                     
-                    if (window.innerWidth < 900) closeMobileMenu();
+                    // Fechar menu mobile após clique
+                    if (window.innerWidth < 768) {
+                        closeMobileMenu();
+                    }
                 }
             });
         }
@@ -107,6 +168,8 @@ document.addEventListener('DOMContentLoaded', function(){
     };
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll();
+    
+    console.log('✅ Script inicializado com sucesso!');
 });
 
 // ============================================
@@ -316,9 +379,9 @@ window.addEventListener('load', function() {
     }, 1000);
 });
 
-// Adicionar estilos CSS dinâmicos
-const themeStyles = document.createElement('style');
-themeStyles.textContent = `
+// Adicionar estilos CSS dinâmicos para menu mobile
+const mobileMenuStyles = document.createElement('style');
+mobileMenuStyles.textContent = `
     /* Transições suaves para tema */
     body,
     .navbar,
@@ -357,9 +420,30 @@ themeStyles.textContent = `
             font-size: 1.2rem !important;
             margin: 0 !important;
         }
+        
+        /* Prevenir scroll quando menu aberto */
+        body.menu-open {
+            overflow: hidden !important;
+        }
+        
+        /* Estilos específicos para menu mobile ativo */
+        .nav-links.active {
+            animation: slideDown 0.3s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     }
 `;
 
-document.head.appendChild(themeStyles);
+document.head.appendChild(mobileMenuStyles);
 
-console.log('✅ script.js CORRIGIDO carregado com sucesso!');
+console.log('✅ script.js CORRIGIDO carregado com sucesso! Menu mobile FUNCIONAL!');

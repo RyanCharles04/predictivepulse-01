@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
     <title>Predictive Pulse - Área do Cliente</title>
 
     <!-- CSS -->
@@ -10,16 +10,46 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-    <!-- HEADER ATUALIZADO COM BOTÃO DE TEMA -->
+    <!-- HEADER ATUALIZADO COM MENU E BOTÃO DE TEMA -->
     <header class="navbar">
         <div class="brand">
             <img src="../img/logo-branca.png" alt="PredictivePulse Logo" class="logo-img" />
         </div>
 
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
+            <span class="menu-line"></span>
+            <span class="menu-line"></span>
+            <span class="menu-line"></span>
+        </button>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="../index.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span class="nav-text">INÍCIO</span>
+            </a>
+            <a href="../index.html#empresa" class="nav-item">
+                <i class="fas fa-building"></i>
+                <span class="nav-text">EMPRESA</span>
+            </a>
+            <a href="servico.html" class="nav-item">
+                <i class="fas fa-cogs"></i>
+                <span class="nav-text">SERVIÇOS</span>
+            </a>
+            <a href="contatos.html" class="nav-item">
+                <i class="fas fa-envelope"></i>
+                <span class="nav-text">CONTATOS</span>
+            </a>
+            <a href="jogo.html" class="nav-item">
+                <i class="fas fa-gamepad"></i>
+                <span class="nav-text">JOGO</span>
+            </a>
+        </nav>
+
         <!-- BOTÃO DE TEMA ESCURO/CLARO -->
         <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
             <i class="fas fa-moon"></i>
             <span class="theme-text">MODO ESCURO</span>
+            <span class="theme-icon-mobile"><i class="fas fa-moon"></i></span>
         </button>
 
         <div class="user-info">
@@ -30,6 +60,7 @@
             </div>
             <button class="logout-btn" id="logoutBtn" title="Sair da conta">
                 <i class="fas fa-sign-out-alt"></i>
+                <span class="logout-text">Sair</span>
             </button>
         </div>
     </header>
@@ -61,7 +92,7 @@
                 <!-- BARRA DE AÇÕES -->
                 <div class="actions-bar">
                     <button class="btn btn-primary" id="add-machine-btn">
-                        <i class="fas fa-plus"></i> Adicionar Máquina
+                        <i class="fas fa-plus"></i> <span class="btn-text">Adicionar Máquina</span>
                     </button>
                     <div class="search-box">
                         <i class="fas fa-search"></i>
@@ -222,19 +253,19 @@
                             <div class="action-buttons">
                                 <button class="action-btn" data-action="status-sistema">
                                     <i class="fas fa-chart-bar"></i>
-                                    Status do Sistema
+                                    <span>Status do Sistema</span>
                                 </button>
                                 <button class="action-btn" data-action="alertas">
                                     <i class="fas fa-exclamation-triangle"></i>
-                                    Ver Alertas
+                                    <span>Ver Alertas</span>
                                 </button>
                                 <button class="action-btn" data-action="dicas-manutencao">
                                     <i class="fas fa-tools"></i>
-                                    Dicas de Manutenção
+                                    <span>Dicas de Manutenção</span>
                                 </button>
                                 <button class="action-btn" data-action="contato-suporte">
                                     <i class="fas fa-headset"></i>
-                                    Falar com Suporte
+                                    <span>Falar com Suporte</span>
                                 </button>
                             </div>
                         </div>
@@ -333,6 +364,7 @@
                             <li><a href="../index.html#empresa">EMPRESA</a></li>
                             <li><a href="servico.html">SERVIÇOS</a></li>
                             <li><a href="contatos.html">CONTATO</a></li>
+                            <li><a href="jogo.html">JOGO</a></li>
                         </ul>
                     </div>
                     

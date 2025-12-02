@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const backToHomeBtn = document.getElementById('backToHome');
     if (backToHomeBtn) {
         backToHomeBtn.addEventListener('click', function() {
-            window.location.href = 'index.html';
+            window.location.href = '../index.html';  // ← CORRIGIDO: volta uma pasta
         });
     }
     
