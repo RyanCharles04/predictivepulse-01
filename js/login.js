@@ -1,33 +1,39 @@
-// login.js - versão completa com login do Google via Firebase
+// login.js - versão otimizada para GitHub Pages
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('=== INICIANDO SISTEMA DE LOGIN ===');
+    console.log('=== INICIANDO SISTEMA DE LOGIN (GitHub Pages) ===');
+    
+    // Configurar URLs base para GitHub Pages
+    const isGitHubPages = window.location.hostname.includes('github.io');
+    const basePath = isGitHubPages ? '/seu-repositorio' : ''; // ← ALTERAR para seu nome de repositório
+    const rootPath = window.location.origin + basePath;
     
     // ===== BOTÃO VOLTAR PARA HOME =====
     const backToHomeBtn = document.getElementById('backToHome');
     if (backToHomeBtn) {
         backToHomeBtn.addEventListener('click', function() {
-            window.location.href = '../index.html';  // ← CORRIGIDO: volta uma pasta
+            if (isGitHubPages) {
+                window.location.href = rootPath + '/index.html';
+            } else {
+                window.location.href = '../index.html';
+            }
         });
     }
     
     // ===== VERIFICAR LOGIN PRÉVIO =====
-    // Verificar se há sessão de login (mantém por 24 horas)
     const checkLoginSession = () => {
         const lastLogin = localStorage.getItem('lastLogin');
         const currentTime = new Date().getTime();
-        const twentyFourHours = 24 * 60 * 60 * 1000; // 24 horas em milissegundos
+        const twentyFourHours = 24 * 60 * 60 * 1000;
         
-        // Se tiver feito login nas últimas 24 horas, redirecionar
         if (lastLogin && (currentTime - parseInt(lastLogin)) < twentyFourHours) {
             console.log('Sessão de login ativa nas últimas 24 horas');
             
-            // Verificar se já está logado no Firebase também
+            // Verificar Firebase
             if (typeof auth !== 'undefined') {
                 auth.onAuthStateChanged((user) => {
                     if (user) {
-                        console.log('Usuário já autenticado no Firebase, redirecionando...');
+                        console.log('Usuário já autenticado no Firebase');
                         
-                        // Criar sessão e redirecionar
                         const userSession = {
                             uid: user.uid,
                             name: user.displayName || user.email.split('@')[0],
@@ -38,24 +44,21 @@ document.addEventListener('DOMContentLoaded', function() {
                         
                         sessionStorage.setItem('currentUser', JSON.stringify(userSession));
                         
-                        // Pequeno delay para melhor experiência
                         setTimeout(() => {
-                            window.location.href = 'area-cliente.html';
+                            window.location.href = rootPath + '/pages/area-cliente.html';
                         }, 500);
                     }
                 });
             } else {
-                // Se não conseguir verificar Firebase, verificar sessionStorage
                 const currentUser = sessionStorage.getItem('currentUser');
                 if (currentUser) {
-                    console.log('Usuário encontrado na sessão, redirecionando...');
+                    console.log('Usuário encontrado na sessão');
                     setTimeout(() => {
-                        window.location.href = 'area-cliente.html';
+                        window.location.href = rootPath + '/pages/area-cliente.html';
                     }, 500);
                 }
             }
         } else {
-            // Se passou mais de 24 horas, limpar login antigo
             console.log('Sessão expirada, mostrar tela de login');
             localStorage.removeItem('lastLogin');
             sessionStorage.removeItem('currentUser');
@@ -90,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const googleLoginBtn = document.getElementById('googleLoginBtn');
     const googleSignupBtn = document.getElementById('googleSignupBtn');
 
-    // Verificar se há credenciais salvas para login
+    // Verificar credenciais salvas
     const savedEmail = localStorage.getItem('savedEmail');
     const rememberMe = localStorage.getItem('rememberMe');
 
@@ -127,8 +130,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ===== SISTEMA DE LOGIN =====
-    
-    // Adicionar validação em tempo real
     emailInput.addEventListener('blur', validateLoginEmail);
     passwordInput.addEventListener('blur', validateLoginPassword);
     emailInput.addEventListener('input', clearFieldErrorOnType);
@@ -164,7 +165,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const password = passwordInput.value.trim();
         const remember = rememberCheckbox.checked;
 
-        // Validar antes de enviar
         const isEmailValid = validateLoginEmail();
         const isPasswordValid = validateLoginPassword();
 
@@ -180,13 +180,10 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Fazer login com Firebase
-        firebaseLogin(email, password, remember);
+        firebaseLogin(email, password, remember, rootPath);
     });
 
     // ===== SISTEMA DE CADASTRO =====
-    
-    // Adicionar validação em tempo real para cadastro
     fullNameInput.addEventListener('blur', validateFullName);
     signupEmailInput.addEventListener('blur', validateSignupEmail);
     signupPasswordInput.addEventListener('blur', validateSignupPassword);
@@ -251,7 +248,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const password = signupPasswordInput.value.trim();
         const confirmPassword = confirmPasswordInput.value.trim();
 
-        // Validar todos os campos
         const isFullNameValid = validateFullName();
         const isEmailValid = validateSignupEmail();
         const isPasswordValid = validateSignupPassword();
@@ -277,35 +273,29 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Fazer cadastro com Firebase
-        firebaseSignup(fullName, email, password);
+        firebaseSignup(fullName, email, password, rootPath);
     });
 
     // ===== SISTEMA DE LOGIN COM GOOGLE =====
-    
-    if (googleLoginBtn) {
-        googleLoginBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            handleGoogleLogin();
-        });
+    function setupGoogleButton(button) {
+        if (button) {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                handleGoogleLogin(rootPath);
+            });
+        }
     }
     
-    if (googleSignupBtn) {
-        googleSignupBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            handleGoogleLogin();
-        });
-    }
+    setupGoogleButton(googleLoginBtn);
+    setupGoogleButton(googleSignupBtn);
     
-    function handleGoogleLogin() {
-        // Salvar qual card está ativo para depois do login
-        const currentCard = signupCard.style.display === 'block' ? 'signup' : 'login';
-        localStorage.setItem('previousCard', currentCard);
+    function handleGoogleLogin(rootPath) {
+        console.log('Iniciando login com Google...');
         
         // Mostrar mensagem de loading
         showMessage('Conectando com Google...', 'loading');
         
-        // Desabilitar todos os botões do Google
+        // Desabilitar botões do Google
         const googleBtns = document.querySelectorAll('.google-btn');
         googleBtns.forEach(btn => {
             btn.disabled = true;
@@ -314,51 +304,74 @@ document.addEventListener('DOMContentLoaded', function() {
             btn.dataset.originalHTML = originalHTML;
         });
         
-        // Executar login com Google
-        if (window.authFunctions && window.authFunctions.signInWithGoogle) {
-            window.authFunctions.signInWithGoogle()
-                .then(result => {
-                    if (result.success) {
-                        // Salvar timestamp do último login
-                        localStorage.setItem('lastLogin', new Date().getTime().toString());
-                        
-                        if (result.isNewUser) {
-                            showMessage('Conta criada com sucesso via Google! Redirecionando...', 'success');
-                        } else {
-                            showMessage('Login realizado com sucesso via Google! Redirecionando...', 'success');
-                        }
-                        
-                        // Criar sessão e redirecionar
-                        const user = result.user;
-                        const userSession = {
-                            uid: user.uid,
-                            name: user.displayName || user.email.split('@')[0],
-                            email: user.email,
-                            photoURL: user.photoURL,
-                            provider: 'google'
-                        };
-                        
-                        sessionStorage.setItem('currentUser', JSON.stringify(userSession));
-                        
-                        // Redirecionar após breve delay
-                        setTimeout(() => {
-                            window.location.href = 'area-cliente.html';
-                        }, 1500);
-                        
-                    } else {
-                        showMessage(result.error || 'Erro ao fazer login com Google', 'error');
-                        restoreGoogleButtons();
-                    }
-                })
-                .catch(error => {
-                    console.error('Erro no login com Google:', error);
-                    showMessage('Erro ao conectar com Google. Tente novamente.', 'error');
-                    restoreGoogleButtons();
-                });
-        } else {
-            showMessage('Sistema de autenticação não disponível', 'error');
+        // Verificar se authFunctions existe
+        if (typeof authFunctions === 'undefined') {
+            console.error('authFunctions não está definido');
+            showMessage('Erro: Sistema de autenticação não carregado', 'error');
             restoreGoogleButtons();
+            return;
         }
+        
+        // Executar login com Google
+        authFunctions.signInWithGoogle()
+            .then(result => {
+                console.log('Resultado do login Google:', result);
+                
+                if (result.success) {
+                    // Salvar timestamp do último login
+                    localStorage.setItem('lastLogin', new Date().getTime().toString());
+                    
+                    // Criar mensagem de sucesso
+                    const successMsg = result.isNewUser ? 
+                        'Conta criada com sucesso via Google!' : 
+                        'Login realizado com sucesso via Google!';
+                    
+                    showMessage(successMsg + ' Redirecionando...', 'success');
+                    
+                    // Criar sessão
+                    const user = result.user;
+                    const userSession = {
+                        uid: user.uid,
+                        name: user.displayName || user.email.split('@')[0],
+                        email: user.email,
+                        photoURL: user.photoURL,
+                        provider: 'google'
+                    };
+                    
+                    sessionStorage.setItem('currentUser', JSON.stringify(userSession));
+                    
+                    // Redirecionar
+                    setTimeout(() => {
+                        window.location.href = rootPath + '/pages/area-cliente.html';
+                    }, 1500);
+                    
+                } else {
+                    console.error('Erro no login Google:', result.error);
+                    showMessage(result.error || 'Erro ao fazer login com Google', 'error');
+                    restoreGoogleButtons();
+                }
+            })
+            .catch(error => {
+                console.error('Erro no login com Google:', error);
+                
+                // Mensagem de erro mais amigável
+                let errorMessage = 'Erro ao conectar com Google. ';
+                
+                if (error.code === 'auth/popup-blocked') {
+                    errorMessage += 'O popup foi bloqueado. Por favor, permita popups para este site.';
+                } else if (error.code === 'auth/popup-closed-by-user') {
+                    errorMessage += 'O popup foi fechado. Tente novamente.';
+                } else if (error.code === 'auth/unauthorized-domain') {
+                    errorMessage += 'Domínio não autorizado. Configure seu domínio no Firebase Console.';
+                } else if (error.code === 'auth/network-request-failed') {
+                    errorMessage += 'Erro de conexão. Verifique sua internet.';
+                } else {
+                    errorMessage += 'Tente novamente.';
+                }
+                
+                showMessage(errorMessage, 'error');
+                restoreGoogleButtons();
+            });
     }
     
     function restoreGoogleButtons() {
@@ -372,15 +385,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ===== SISTEMA DE RECUPERAÇÃO DE SENHA =====
-    
     const forgotPassword = document.querySelector('.forgot-password');
-    forgotPassword.addEventListener('click', function(e) {
-        e.preventDefault();
-        showForgotPasswordModal();
-    });
+    if (forgotPassword) {
+        forgotPassword.addEventListener('click', function(e) {
+            e.preventDefault();
+            showForgotPasswordModal();
+        });
+    }
 
     // ===== FUNÇÕES COMPARTILHADAS =====
-
     function clearFieldErrorOnType(e) {
         clearFieldError(e.target);
         e.target.classList.remove('error');
@@ -416,9 +429,13 @@ function isValidEmail(email) {
 }
 
 // Função de login com Firebase
-async function firebaseLogin(email, password, remember) {
+async function firebaseLogin(email, password, remember, rootPath) {
     const loginBtn = document.querySelector('.login-form .login-btn');
-    const originalText = loginBtn.textContent;
+    
+    if (!loginBtn) {
+        showMessage('Erro: Botão de login não encontrado', 'error');
+        return;
+    }
     
     // Mostrar estado de loading
     loginBtn.disabled = true;
@@ -428,101 +445,70 @@ async function firebaseLogin(email, password, remember) {
     showMessage('Entrando...', 'loading');
 
     try {
-        // Usar a função do auth.js se disponível
-        if (window.authFunctions && window.authFunctions.signIn) {
-            const result = await window.authFunctions.signIn(email, password);
-            
-            if (result.success) {
-                const user = result.user;
-                
-                console.log('Login bem-sucedido:', user.email);
-                
-                // Salvar timestamp do último login (mantém por 24 horas)
-                localStorage.setItem('lastLogin', new Date().getTime().toString());
-                
-                // Buscar dados adicionais do usuário no Firestore
-                let userData = null;
-                try {
-                    const userDoc = await db.collection('users').doc(user.uid).get();
-                    if (userDoc.exists) {
-                        userData = userDoc.data();
-                    } else {
-                        // Criar documento do usuário se não existir
-                        if (window.authFunctions && window.authFunctions.initializeUserData) {
-                            const initResult = await window.authFunctions.initializeUserData(user, user.displayName || user.email.split('@')[0]);
-                            userData = initResult.data;
-                        }
-                    }
-                } catch (firestoreError) {
-                    console.warn('Erro ao acessar Firestore:', firestoreError);
-                    userData = { 
-                        name: user.displayName || user.email.split('@')[0], 
-                        company: `Empresa ${user.email.split('@')[0]}` 
-                    };
-                }
+        // Verificar se authFunctions existe
+        if (typeof authFunctions === 'undefined') {
+            throw new Error('Sistema de autenticação não carregado');
+        }
 
-                // Salvar usuário na sessão
-                const userSession = {
-                    uid: user.uid,
-                    name: userData?.name || user.displayName || user.email.split('@')[0],
-                    email: user.email,
-                    company: userData?.company || `Empresa ${user.email.split('@')[0]}`,
-                    provider: 'email'
-                };
-                sessionStorage.setItem('currentUser', JSON.stringify(userSession));
-
-                // Salvar credenciais se "Lembrar-me" estiver marcado
-                if (remember) {
-                    localStorage.setItem('savedEmail', email);
-                    localStorage.setItem('rememberMe', 'true');
-                    // NÃO SALVAR SENHA POR QUESTÕES DE SEGURANÇA
-                } else {
-                    localStorage.removeItem('savedEmail');
-                    localStorage.removeItem('rememberMe');
-                }
-
-                showMessage('Login realizado com sucesso! Redirecionando...', 'success');
-                
-                // Redirecionar para a área do cliente
-                setTimeout(() => {
-                    window.location.href = 'area-cliente.html';
-                }, 1500);
-                
-            } else {
-                throw new Error(result.error);
-            }
-        } else {
-            // Fallback para o método antigo
-            const userCredential = await auth.signInWithEmailAndPassword(email, password);
-            const user = userCredential.user;
+        const result = await authFunctions.signIn(email, password);
+        
+        if (result.success) {
+            const user = result.user;
             
             console.log('Login bem-sucedido:', user.email);
             
             // Salvar timestamp do último login
             localStorage.setItem('lastLogin', new Date().getTime().toString());
             
-            // Criar sessão e redirecionar
+            // Buscar dados do usuário
+            let userData = null;
+            try {
+                const userDoc = await db.collection('users').doc(user.uid).get();
+                if (userDoc.exists) {
+                    userData = userDoc.data();
+                } else {
+                    // Criar documento do usuário se não existir
+                    if (authFunctions.initializeUserData) {
+                        const initResult = await authFunctions.initializeUserData(user, user.displayName || user.email.split('@')[0]);
+                        userData = initResult.data;
+                    }
+                }
+            } catch (firestoreError) {
+                console.warn('Erro ao acessar Firestore:', firestoreError);
+                userData = { 
+                    name: user.displayName || user.email.split('@')[0], 
+                    company: `Empresa ${user.email.split('@')[0]}` 
+                };
+            }
+
+            // Salvar usuário na sessão
             const userSession = {
                 uid: user.uid,
-                name: user.displayName || user.email.split('@')[0],
+                name: userData?.name || user.displayName || user.email.split('@')[0],
                 email: user.email,
-                photoURL: user.photoURL,
+                company: userData?.company || `Empresa ${user.email.split('@')[0]}`,
                 provider: 'email'
             };
-            
             sessionStorage.setItem('currentUser', JSON.stringify(userSession));
 
             // Salvar credenciais se "Lembrar-me" estiver marcado
             if (remember) {
                 localStorage.setItem('savedEmail', email);
                 localStorage.setItem('rememberMe', 'true');
+            } else {
+                localStorage.removeItem('savedEmail');
+                localStorage.removeItem('rememberMe');
             }
 
             showMessage('Login realizado com sucesso! Redirecionando...', 'success');
             
+            // Redirecionar para a área do cliente
             setTimeout(() => {
-                window.location.href = 'area-cliente.html';
+                window.location.href = rootPath + '/pages/area-cliente.html';
             }, 1500);
+            
+        } else {
+            throw new Error(result.error);
         }
         
     } catch (error) {
@@ -556,9 +542,13 @@ async function firebaseLogin(email, password, remember) {
 }
 
 // Função de cadastro com Firebase
-async function firebaseSignup(fullName, email, password) {
+async function firebaseSignup(fullName, email, password, rootPath) {
     const signupBtn = document.querySelector('.signup-form .login-btn');
-    const originalText = signupBtn.textContent;
+    
+    if (!signupBtn) {
+        showMessage('Erro: Botão de cadastro não encontrado', 'error');
+        return;
+    }
     
     signupBtn.disabled = true;
     signupBtn.classList.add('loading');
@@ -567,65 +557,42 @@ async function firebaseSignup(fullName, email, password) {
     showMessage('Criando sua conta...', 'loading');
 
     try {
-        // Usar a função do auth.js se disponível
-        if (window.authFunctions && window.authFunctions.signUp) {
-            const result = await window.authFunctions.signUp(email, password, fullName);
+        // Verificar se authFunctions existe
+        if (typeof authFunctions === 'undefined') {
+            throw new Error('Sistema de autenticação não carregado');
+        }
+
+        const result = await authFunctions.signUp(email, password, fullName);
+        
+        if (result.success) {
+            const user = result.user;
             
-            if (result.success) {
-                const user = result.user;
-                
-                console.log('Usuário criado:', user.uid);
-                
-                // Salvar timestamp do último login
-                localStorage.setItem('lastLogin', new Date().getTime().toString());
-                
-                // Criar máquinas de exemplo para novos usuários
-                try {
-                    if (window.authFunctions && window.authFunctions.createSampleMachines) {
-                        await window.authFunctions.createSampleMachines(user.uid);
-                    }
-                } catch (sampleError) {
-                    console.warn('Não foi possível criar máquinas de exemplo:', sampleError);
-                }
-
-                showMessage('Conta criada com sucesso! Faça login para continuar.', 'success');
-                
-                // Limpar formulário e voltar para login
-                document.getElementById('signupForm').reset();
-                
-                setTimeout(() => {
-                    switchToLogin();
-                }, 2000);
-                
-            } else {
-                throw new Error(result.error);
-            }
-        } else {
-            // Fallback para o método antigo
-            const userCredential = await auth.createUserWithEmailAndPassword(email, password);
-            const user = userCredential.user;
-
             console.log('Usuário criado:', user.uid);
-
+            
             // Salvar timestamp do último login
             localStorage.setItem('lastLogin', new Date().getTime().toString());
-
-            // Atualizar perfil do usuário
-            await user.updateProfile({
-                displayName: fullName
-            });
-
-            // Criar documento do usuário no Firestore
-            await createUserDocument(user, fullName);
+            
+            // Criar máquinas de exemplo
+            try {
+                if (authFunctions.createSampleMachines) {
+                    await authFunctions.createSampleMachines(user.uid);
+                }
+            } catch (sampleError) {
+                console.warn('Não foi possível criar máquinas de exemplo:', sampleError);
+            }
 
             showMessage('Conta criada com sucesso! Faça login para continuar.', 'success');
             
-            // Limpar formulário e voltar para login
+            // Limpar formulário
             document.getElementById('signupForm').reset();
             
+            // Voltar para tela de login
             setTimeout(() => {
                 switchToLogin();
             }, 2000);
+            
+        } else {
+            throw new Error(result.error);
         }
         
     } catch (error) {
@@ -675,48 +642,8 @@ function switchToLogin() {
     }
 }
 
-// Função para criar documento do usuário no Firestore (compatibilidade)
-async function createUserDocument(user, fullName) {
-    // Garantir que o nome não está vazio
-    const userName = fullName || user.displayName || user.email.split('@')[0];
-    const formattedName = userName.charAt(0).toUpperCase() + userName.slice(1);
-    
-    const userData = {
-        name: formattedName,
-        email: user.email,
-        company: `Empresa ${formattedName.split(' ')[0]}`,
-        createdAt: new Date(),
-        lastLogin: new Date(),
-        lastUpdate: new Date(),
-        emailVerified: user.emailVerified,
-        provider: 'email'
-    };
-
-    try {
-        // Salvar com o UID como ID do documento
-        await db.collection('users').doc(user.uid).set(userData);
-        
-        // Criar um documento adicional com o nome para facilitar a busca
-        await db.collection('userNames').doc(user.uid).set({
-            userId: user.uid,
-            name: formattedName,
-            email: user.email,
-            createdAt: new Date(),
-            lastUpdate: new Date(),
-            provider: 'email'
-        });
-        
-        console.log('Documento do usuário criado com nome:', formattedName);
-        return userData;
-    } catch (error) {
-        console.error('Erro ao criar documento do usuário:', error);
-        return userData;
-    }
-}
-
 // ===== SISTEMA DE RECUPERAÇÃO DE SENHA =====
 
-// Modal para "Esqueci a senha"
 function showForgotPasswordModal() {
     // Criar modal
     const modal = document.createElement('div');
@@ -836,26 +763,14 @@ async function firebaseResetPassword(email) {
     const messageDiv = showMessage('Enviando email de redefinição...', 'loading');
     
     try {
-        // Usar a função do auth.js se disponível
-        if (window.authFunctions && window.authFunctions.resetPassword) {
-            const result = await window.authFunctions.resetPassword(email);
-            
-            if (result.success) {
-                showMessage('Email de redefinição enviado! Verifique sua caixa de entrada e a pasta de spam.', 'success');
-                
-                console.log('Email de redefinição enviado para:', email);
-                
-                // Fechar modal após sucesso
-                const modal = document.querySelector('.modal-overlay');
-                if (modal) {
-                    setTimeout(() => modal.remove(), 3000);
-                }
-            } else {
-                throw new Error(result.error);
-            }
-        } else {
-            // Método antigo
-            await auth.sendPasswordResetEmail(email);
+        // Verificar se authFunctions existe
+        if (typeof authFunctions === 'undefined') {
+            throw new Error('Sistema de autenticação não carregado');
+        }
+
+        const result = await authFunctions.resetPassword(email);
+        
+        if (result.success) {
             showMessage('Email de redefinição enviado! Verifique sua caixa de entrada e a pasta de spam.', 'success');
             
             console.log('Email de redefinição enviado para:', email);
@@ -865,6 +780,8 @@ async function firebaseResetPassword(email) {
             if (modal) {
                 setTimeout(() => modal.remove(), 3000);
             }
+        } else {
+            throw new Error(result.error);
         }
         
     } catch (error) {
@@ -956,7 +873,7 @@ function clearAllFieldErrors() {
     fieldErrors.forEach(error => error.remove());
 }
 
-// Adicionar animação CSS para as mensagens
+// Adicionar animação CSS
 const style = document.createElement('style');
 style.textContent = `
     @keyframes slideDown {
@@ -996,6 +913,83 @@ style.textContent = `
     
     .fa-spin {
         animation: spin 1s linear infinite;
+    }
+    
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+    }
+    
+    .modal-content {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 400px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+    
+    .modal-header {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    
+    .modal-header h3 {
+        margin: 0 0 10px 0;
+        color: #333;
+    }
+    
+    .modal-header p {
+        margin: 0;
+        color: #666;
+        font-size: 14px;
+    }
+    
+    .modal-buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-top: 20px;
+    }
+    
+    .modal-btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+    
+    .modal-btn-cancel {
+        background: #f0f0f0;
+        color: #666;
+    }
+    
+    .modal-btn-cancel:hover {
+        background: #e0e0e0;
+    }
+    
+    .modal-btn-submit {
+        background: #4CAF50;
+        color: white;
+    }
+    
+    .modal-btn-submit:hover {
+        background: #45a049;
+    }
+    
+    .modal-btn-submit:disabled {
+        background: #ccc;
+        cursor: not-allowed;
     }
 `;
 document.head.appendChild(style);
