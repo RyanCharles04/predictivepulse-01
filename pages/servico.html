@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Serviços | PredictivePulse</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../css/servico.css">
@@ -10,60 +10,61 @@
 </head>
 <body class="services-page">
 
-    <!-- NAVBAR SEPARADA (IGUAL AO INDEX.HTML) -->
+    <!-- NAVBAR RESPONSIVA -->
     <header class="navbar">
         <div class="brand">
             <img src="../img/logo-branca.png" alt="PredictivePulse Logo" class="logo-img" />
         </div>
 
-        <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
             <span class="menu-line"></span>
             <span class="menu-line"></span>
             <span class="menu-line"></span>
         </button>
 
-        <nav class="nav-links" id="navLinks">
+        <nav class="nav-links" id="navLinks" aria-label="Navegação principal">
             <a href="../index.html" class="nav-item">
                 <i class="fas fa-home"></i>
-                INÍCIO
+                <span class="nav-text">INÍCIO</span>
             </a>
             <a href="../index.html#empresa" class="nav-item">
                 <i class="fas fa-building"></i>
-                EMPRESA
+                <span class="nav-text">EMPRESA</span>
             </a>
             <a href="servico.html" class="nav-item active">
                 <i class="fas fa-cogs"></i>
-                SERVIÇOS
+                <span class="nav-text">SERVIÇOS</span>
             </a>
             <a href="contatos.html" class="nav-item">
                 <i class="fas fa-envelope"></i>
-                CONTATOS
+                <span class="nav-text">CONTATOS</span>
             </a>
             <a href="jogo.html" class="nav-item">
                 <i class="fas fa-gamepad"></i>
-                JOGO
+                <span class="nav-text">JOGO</span>
             </a>
         </nav>
 
-        <!-- BOTÃO DE TEMA ESCURO/CLARO -->
-        <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+        <!-- BOTÃO DE TEMA OTIMIZADO PARA MOBILE -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema claro/escuro">
             <i class="fas fa-moon"></i>
             <span class="theme-text">MODO ESCURO</span>
         </button>
 
-        <a class="area-cliente" href="login.html">
+        <a class="area-cliente" href="login.html" aria-label="Área do cliente">
             <i class="fas fa-user-circle"></i>
-            ÁREA DO CLIENTE
+            <span class="area-cliente-text">ÁREA DO CLIENTE</span>
         </a>
     </header>
 
-    <!-- HERO SECTION SOFISTICADA -->
+    <!-- HERO SECTION RESPONSIVA -->
     <section class="hero-services">
         <div class="hero-gradient"></div>
         <div class="hero-image-container">
             <img src="../img/colaboradores-que-prestam-servicos-ao-sistema-hvac 1.png 1.png" 
                  class="hero-image" 
-                 alt="Equipe especializada em manutenção preditiva industrial">
+                 alt="Equipe especializada em manutenção preditiva industrial"
+                 loading="lazy">
         </div>
         <div class="hero-overlay">
             <div class="container hero-content">
@@ -95,8 +96,8 @@
         </div>
     </section>
 
-    <!-- BARRA TOP (IGUAL AO INDEX.HTML) -->
-    <section class="barra-top" aria-hidden="false">
+    <!-- BARRA TOP RESPONSIVA -->
+    <section class="barra-top" aria-label="Destaques da empresa">
         <div class="item">EFICIÊNCIA</div>
         <div class="item">MONITORAMENTO</div>
         <div class="item">PREVENÇÃO</div>
@@ -295,7 +296,7 @@
         <div class="container">
             <div class="cta-wrapper">
                 <div class="cta-image">
-                    <img src="../img/erasebg-transformed 1.png" alt="Engenheira especialista em análise preditiva">
+                    <img src="../img/erasebg-transformed 1.png" alt="Engenheira especialista em análise preditiva" loading="lazy">
                     <div class="image-overlay"></div>
                 </div>
                 <div class="cta-content">
@@ -344,7 +345,7 @@
             <div class="footer-container">
                 <div class="footer-content">
                     <div class="footer-brand">
-                        <img src="../img/logo-branca.png" alt="PredictivePulse Logo" class="footer-logo-img" />
+                        <img src="../img/logo-branca.png" alt="PredictivePulse Logo" class="footer-logo-img" loading="lazy" />
                         <p>PredictivePulse é uma startup brasileira especializada em manutenção preditiva. Utiliza sensores IoT, análise de vibração e inteligência artificial para antecipar falhas e aumentar a eficiência industrial. Sua plataforma digital facilita o acompanhamento dos equipamentos em tempo real, reduzindo custos e fortalecendo a produtividade.</p>
                     </div>
                     
