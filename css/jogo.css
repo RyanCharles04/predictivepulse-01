@@ -1,4 +1,4 @@
-/* Jogo.css - Estilos simplificados para a página do jogo */
+/* ===== ESTILOS DA PÁGINA DO JOGO ===== */
 
 /* Reset e layout geral */
 .jogo-simple-container {
@@ -14,15 +14,15 @@
 .jogo-simple-hero {
     background: linear-gradient(135deg, var(--blue-dark), var(--blue-royal));
     color: white;
-    padding: 80px 0 30px;
+    padding: 100px 0 40px;
     text-align: center;
-    margin-top: 70px;
+    margin-top: 80px; /* Altura da navbar fixa */
     width: 100%;
     box-sizing: border-box;
 }
 
 .jogo-simple-hero h1 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-size: 2.8rem;
     font-weight: 900;
     margin-bottom: 15px;
     text-transform: uppercase;
@@ -33,7 +33,7 @@
 }
 
 .jogo-simple-hero .subtitle {
-    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-size: 1.2rem;
     opacity: 0.9;
     max-width: 600px;
     margin: 0 auto;
@@ -53,7 +53,7 @@
     overflow: hidden;
     width: 100%;
     box-sizing: border-box;
-    min-height: auto;
+    min-height: 60vh;
 }
 
 .jogo-main-section::before {
@@ -63,8 +63,9 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(17,17,68,0.02)"/></svg>');
-    background-size: cover;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(249, 133, 19, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(34, 51, 130, 0.05) 0%, transparent 40%);
     z-index: 1;
 }
 
@@ -72,35 +73,36 @@
     position: relative;
     z-index: 2;
     max-width: 600px;
-    width: calc(100% - 30px);
+    width: 100%;
     background: white;
-    border-radius: 15px;
-    padding: 30px 20px;
+    border-radius: 20px;
+    padding: 40px 30px;
     text-align: center;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
     border: 2px solid rgba(249, 133, 19, 0.1);
     transform: perspective(1000px) rotateY(0deg);
     transition: transform 0.5s ease, box-shadow 0.5s ease;
     box-sizing: border-box;
     margin: 0 auto;
+    animation: fadeInUp 0.8s ease-out;
 }
 
 .jogo-card:hover {
     transform: perspective(1000px) rotateY(5deg);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15);
 }
 
 .jogo-icon {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     background: linear-gradient(135deg, var(--orange), #FFB347);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 25px;
+    margin: 0 auto 30px;
     animation: float 3s ease-in-out infinite;
-    box-shadow: 0 10px 25px rgba(249, 133, 19, 0.3);
+    box-shadow: 0 15px 35px rgba(249, 133, 19, 0.3);
 }
 
 @keyframes float {
@@ -108,76 +110,79 @@
         transform: translateY(0) rotate(0deg); 
     }
     25% { 
-        transform: translateY(-10px) rotate(5deg); 
+        transform: translateY(-12px) rotate(5deg); 
     }
     75% { 
-        transform: translateY(-5px) rotate(-5deg); 
+        transform: translateY(-6px) rotate(-5deg); 
     }
 }
 
 .jogo-icon i {
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: white;
 }
 
 .jogo-content h2 {
     color: var(--blue-dark);
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-size: 2.2rem;
     margin-bottom: 20px;
     font-weight: 800;
     line-height: 1.2;
     padding: 0 10px;
     word-wrap: break-word;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
 }
 
 .jogo-content p {
     color: #666;
-    font-size: clamp(0.95rem, 2vw, 1.2rem);
-    line-height: 1.5;
-    margin-bottom: 30px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 35px;
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding: 0 10px;
+    padding: 0 15px;
     box-sizing: border-box;
+    animation: fadeInUp 0.8s ease-out 0.3s both;
 }
 
 /* Botão do Jogo */
 .jogo-actions {
-    margin-top: 30px;
-    padding: 0 10px;
+    margin-top: 35px;
+    padding: 0 15px;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
 }
 
 .jogo-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 15px;
     background: linear-gradient(135deg, var(--orange), #FF8C00);
     color: white;
     text-decoration: none;
-    padding: 18px 30px;
+    padding: 20px 35px;
     border-radius: 50px;
-    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-size: 1.2rem;
     font-weight: 700;
     transition: all 0.3s ease;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    box-shadow: 0 10px 25px rgba(249, 133, 19, 0.3);
+    letter-spacing: 0.8px;
+    box-shadow: 0 15px 35px rgba(249, 133, 19, 0.3);
     position: relative;
     overflow: hidden;
     border: none;
     cursor: pointer;
-    min-width: 250px;
+    min-width: 280px;
     width: 100%;
-    max-width: 350px;
+    max-width: 380px;
     box-sizing: border-box;
     line-height: 1.2;
 }
 
 .jogo-btn:hover {
-    transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 15px 35px rgba(249, 133, 19, 0.4);
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 20px 45px rgba(249, 133, 19, 0.4);
     background: linear-gradient(135deg, #FF8C00, #FF6B00);
 }
 
@@ -186,7 +191,7 @@
 }
 
 .jogo-btn i {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     transition: transform 0.3s ease;
 }
 
@@ -217,30 +222,30 @@
 
 /* Nota informativa */
 .jogo-note {
-    margin-top: 20px;
-    font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+    margin-top: 25px;
+    font-size: 0.95rem;
     color: #666;
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    gap: 10px;
-    padding: 12px;
+    gap: 12px;
+    padding: 15px;
     background: rgba(34, 51, 130, 0.05);
-    border-radius: 8px;
+    border-radius: 10px;
     border-left: 4px solid var(--orange);
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
     text-align: left;
     box-sizing: border-box;
-    line-height: 1.4;
+    line-height: 1.5;
 }
 
 .jogo-note i {
     color: var(--orange);
-    font-size: 1rem;
+    font-size: 1.1rem;
     flex-shrink: 0;
-    margin-top: 2px;
+    margin-top: 3px;
 }
 
 .jogo-note span {
@@ -316,33 +321,209 @@
     }
 }
 
-/* Responsividade Específica para Celulares */
-@media (max-width: 480px) {
+/* Animação de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== RESPONSIVIDADE MOBILE ===== */
+
+/* TABLET (768px - 1024px) */
+@media (max-width: 1024px) {
     .jogo-simple-hero {
-        padding: 70px 0 25px;
-        margin-top: 60px;
+        padding: 90px 0 35px;
+        margin-top: 70px;
     }
     
     .jogo-simple-hero h1 {
-        font-size: 1.8rem;
-        letter-spacing: 0.5px;
-        padding: 0 10px;
+        font-size: 2.4rem;
+    }
+    
+    .jogo-simple-hero .subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .jogo-card {
+        padding: 35px 25px;
+        border-radius: 18px;
+    }
+    
+    .jogo-icon {
+        width: 90px;
+        height: 90px;
+    }
+    
+    .jogo-icon i {
+        font-size: 2.7rem;
+    }
+    
+    .jogo-content h2 {
+        font-size: 2rem;
+    }
+    
+    .jogo-content p {
+        font-size: 1.05rem;
+    }
+    
+    .jogo-btn {
+        padding: 18px 30px;
+        font-size: 1.1rem;
+        min-width: 250px;
+    }
+}
+
+/* MOBILE LARGE (600px - 768px) */
+@media (max-width: 768px) {
+    .jogo-simple-hero {
+        padding: 80px 0 30px;
+        margin-top: 70px;
+    }
+    
+    .jogo-simple-hero h1 {
+        font-size: 2rem;
+        letter-spacing: 0.8px;
     }
     
     .jogo-simple-hero .subtitle {
         font-size: 1rem;
-        padding: 0 15px;
+        line-height: 1.4;
     }
     
     .jogo-main-section {
-        padding: 25px 10px;
-        min-height: 60vh;
+        padding: 30px 15px;
+        min-height: 50vh;
     }
     
     .jogo-card {
-        padding: 25px 15px;
-        border-radius: 12px;
-        width: calc(100% - 20px);
+        padding: 30px 20px;
+        border-radius: 16px;
+        width: 100%;
+    }
+    
+    .jogo-icon {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 25px;
+    }
+    
+    .jogo-icon i {
+        font-size: 2.3rem;
+    }
+    
+    .jogo-content h2 {
+        font-size: 1.7rem;
+        margin-bottom: 18px;
+    }
+    
+    .jogo-content p {
+        font-size: 1rem;
+        margin-bottom: 30px;
+        line-height: 1.5;
+    }
+    
+    .jogo-actions {
+        margin-top: 25px;
+    }
+    
+    .jogo-btn {
+        padding: 16px 25px;
+        font-size: 1.05rem;
+        min-width: 220px;
+        gap: 12px;
+    }
+    
+    .jogo-btn i {
+        font-size: 1.1rem;
+    }
+    
+    .jogo-note {
+        font-size: 0.9rem;
+        padding: 12px;
+        gap: 10px;
+    }
+    
+    .jogo-note i {
+        font-size: 1rem;
+    }
+    
+    /* Ajustes do menu mobile */
+    .theme-toggle .theme-text {
+        display: none;
+    }
+    
+    .theme-toggle {
+        padding: 10px !important;
+        width: 50px !important;
+        height: 50px !important;
+        justify-content: center !important;
+    }
+    
+    .theme-toggle i {
+        font-size: 1.2rem !important;
+        margin: 0 !important;
+    }
+    
+    .area-cliente .cliente-text {
+        display: none;
+    }
+    
+    .area-cliente {
+        padding: 10px !important;
+        width: 50px !important;
+        height: 50px !important;
+        justify-content: center !important;
+    }
+    
+    .area-cliente i {
+        display: none;
+    }
+    
+    .area-cliente .cliente-mobile {
+        display: block !important;
+        font-size: 1.2rem !important;
+    }
+}
+
+/* MOBILE SMALL (480px - 600px) */
+@media (max-width: 600px) {
+    .jogo-simple-hero {
+        margin-top: 70px;
+        padding: 70px 0 25px;
+    }
+    
+    .jogo-simple-hero h1 {
+        font-size: 1.8rem;
+        margin-bottom: 12px;
+    }
+    
+    .jogo-simple-hero .subtitle {
+        font-size: 0.95rem;
+        margin: 0 auto;
+        line-height: 1.4;
+    }
+    
+    .jogo-main-section {
+        padding: 25px 12px;
+    }
+    
+    .jogo-card {
+        padding: 25px 18px;
+        border-radius: 14px;
+    }
+    
+    .form-group {
+        margin-bottom: 18px;
+    }
+    
+    .form-group label {
+        font-size: 0.9rem;
     }
     
     .jogo-icon {
@@ -363,18 +544,19 @@
     .jogo-content p {
         font-size: 0.95rem;
         margin-bottom: 25px;
-        line-height: 1.4;
+        padding: 0 10px;
     }
     
     .jogo-actions {
         margin-top: 20px;
+        padding: 0 10px;
     }
     
     .jogo-btn {
         padding: 16px 20px;
         font-size: 1rem;
         min-width: 200px;
-        gap: 8px;
+        gap: 10px;
     }
     
     .jogo-btn i {
@@ -382,7 +564,7 @@
     }
     
     .jogo-note {
-        font-size: 0.8rem;
+        font-size: 0.85rem;
         padding: 10px;
         gap: 8px;
     }
@@ -390,11 +572,119 @@
     .jogo-note i {
         font-size: 0.9rem;
     }
+    
+    .navbar {
+        padding: 0 15px;
+        height: 70px;
+    }
+    
+    .nav-text, .area-cliente-text {
+        display: inline;
+    }
 }
 
-/* Para telas muito pequenas (iPhone SE, etc) */
-@media (max-width: 320px) {
+/* MUITO PEQUENO (até 480px) */
+@media (max-width: 480px) {
+    .jogo-simple-hero {
+        margin-top: 70px;
+        padding: 60px 0 20px;
+    }
+    
     .jogo-simple-hero h1 {
+        font-size: 1.6rem;
+        padding: 0 10px;
+    }
+    
+    .jogo-simple-hero .subtitle {
+        font-size: 0.9rem;
+        padding: 0 15px;
+    }
+    
+    .jogo-main-section {
+        padding: 20px 10px;
+        min-height: 45vh;
+    }
+    
+    .jogo-card {
+        padding: 22px 15px;
+        border-radius: 12px;
+    }
+    
+    .jogo-icon {
+        width: 65px;
+        height: 65px;
+        margin-bottom: 18px;
+    }
+    
+    .jogo-icon i {
+        font-size: 1.8rem;
+    }
+    
+    .jogo-content h2 {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+    }
+    
+    .jogo-content p {
+        font-size: 0.9rem;
+        margin-bottom: 22px;
+        line-height: 1.4;
+    }
+    
+    .jogo-actions {
+        margin-top: 18px;
+        padding: 0 8px;
+    }
+    
+    .jogo-btn {
+        padding: 14px 18px;
+        font-size: 0.95rem;
+        min-width: 180px;
+        gap: 8px;
+        border-radius: 40px;
+    }
+    
+    .jogo-btn i {
+        font-size: 0.9rem;
+    }
+    
+    .jogo-note {
+        font-size: 0.8rem;
+        padding: 10px 8px;
+        gap: 8px;
+        border-radius: 8px;
+    }
+    
+    .jogo-note i {
+        font-size: 0.85rem;
+    }
+    
+    .jogo-note span {
+        font-size: 0.8rem;
+    }
+}
+
+/* MUITO PEQUENO (até 360px) - iPhone SE, etc */
+@media (max-width: 360px) {
+    .jogo-simple-hero h1 {
+        font-size: 1.4rem;
+    }
+    
+    .jogo-simple-hero .subtitle {
+        font-size: 0.85rem;
+    }
+    
+    .jogo-card {
+        padding: 20px 12px;
+        border-radius: 10px;
+    }
+    
+    .jogo-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .jogo-icon i {
         font-size: 1.6rem;
     }
     
@@ -403,59 +693,132 @@
     }
     
     .jogo-content p {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+        padding: 0 8px;
     }
     
     .jogo-btn {
-        padding: 14px 16px;
+        padding: 12px 16px;
         font-size: 0.9rem;
-        min-width: 180px;
+        min-width: 160px;
     }
     
-    .jogo-note {
-        font-size: 0.75rem;
+    .jogo-btn span {
+        font-size: 0.9rem;
+    }
+    
+    /* Ajuste do menu mobile */
+    .navbar {
+        padding: 0 10px;
+        height: 65px;
+    }
+    
+    .theme-toggle,
+    .area-cliente {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .brand .logo-img {
+        max-height: 30px;
+    }
+    
+    .nav-toggle {
+        width: 40px;
+        height: 40px;
     }
 }
 
-/* Para tablets em modo retrato */
-@media (min-width: 481px) and (max-width: 768px) {
+/* ORIENTAÇÃO LANDSCAPE PARA DISPOSITIVOS MÓVEIS */
+@media (max-height: 500px) and (orientation: landscape) {
     .jogo-simple-hero {
-        padding: 90px 0 35px;
+        padding: 60px 0 20px;
+        min-height: auto;
     }
     
-    .jogo-simple-hero h1 {
-        font-size: 2.2rem;
-    }
-    
-    .jogo-simple-hero .subtitle {
-        font-size: 1.1rem;
+    .jogo-main-section {
+        padding: 20px 10px;
+        min-height: 40vh;
     }
     
     .jogo-card {
-        padding: 35px 25px;
-        border-radius: 16px;
+        padding: 20px 15px;
+        max-width: 500px;
     }
     
     .jogo-icon {
-        width: 90px;
-        height: 90px;
+        width: 60px;
+        height: 60px;
+        margin-bottom: 15px;
     }
     
     .jogo-icon i {
-        font-size: 2.8rem;
-    }
-    
-    .jogo-content h2 {
         font-size: 1.8rem;
     }
     
+    .jogo-content h2 {
+        font-size: 1.5rem;
+        margin-bottom: 12px;
+    }
+    
     .jogo-content p {
-        font-size: 1.05rem;
+        font-size: 0.9rem;
+        margin-bottom: 20px;
     }
     
     .jogo-btn {
-        padding: 20px 35px;
-        font-size: 1.1rem;
+        padding: 14px 20px;
+        font-size: 0.95rem;
+        min-width: 200px;
+    }
+}
+
+/* PREVENIR ZOOM EM INPUTS NO iOS */
+@media screen and (max-width: 768px) {
+    input, select, textarea {
+        font-size: 16px !important;
+    }
+    
+    /* Evitar zoom automático no iOS */
+    @supports (-webkit-touch-callout: none) {
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            font-size: 16px !important;
+        }
+    }
+}
+
+/* CORREÇÃO PARA DISPOSITIVOS COM TOUCH */
+@media (hover: none) and (pointer: coarse) {
+    .jogo-card:hover {
+        transform: none;
+    }
+    
+    .jogo-btn:hover {
+        transform: none;
+        box-shadow: 0 15px 35px rgba(249, 133, 19, 0.3);
+    }
+    
+    .jogo-btn:active {
+        transform: scale(0.98);
+    }
+}
+
+/* Ajustes de altura mínima para evitar conteúdo cortado */
+@media (max-height: 700px) {
+    .jogo-simple-hero {
+        padding: 60px 0 20px;
+        margin-top: 70px;
+    }
+    
+    .jogo-main-section {
+        padding: 20px 10px;
+        min-height: 50vh;
+    }
+    
+    .jogo-card {
+        padding: 25px 18px;
     }
 }
 
@@ -475,59 +838,59 @@
     flex: 1;
 }
 
-/* Ajustes de altura mínima para evitar conteúdo cortado */
-@media (max-height: 700px) {
-    .jogo-simple-hero {
-        padding: 60px 0 20px;
-        margin-top: 60px;
+/* CORREÇÕES GERAIS */
+a:focus, button:focus {
+    outline: 2px solid var(--orange);
+    outline-offset: 2px;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+}
+
+/* Prevenir overflow de texto */
+.jogo-content p,
+.jogo-note span {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Garantir que as imagens sejam responsivas */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Adicionar padding seguro para dispositivos com notch */
+@supports (padding: max(0px)) {
+    .container {
+        padding-left: max(15px, env(safe-area-inset-left));
+        padding-right: max(15px, env(safe-area-inset-right));
     }
     
-    .jogo-main-section {
-        padding: 20px 10px;
+    .navbar {
+        padding-left: max(15px, env(safe-area-inset-left));
+        padding-right: max(15px, env(safe-area-inset-right));
     }
     
-    .jogo-card {
-        padding: 20px 15px;
+    .jogo-simple-hero h1,
+    .jogo-simple-hero .subtitle,
+    .jogo-content h2,
+    .jogo-content p {
+        padding-left: max(15px, env(safe-area-inset-left));
+        padding-right: max(15px, env(safe-area-inset-right));
     }
 }
 
-/* Prevenir zoom em inputs em iOS */
-@media screen and (max-width: 768px) {
-    input, select, textarea {
-        font-size: 16px !important;
+/* Melhorar legibilidade em telas pequenas */
+@media (max-width: 768px) {
+    .jogo-content p,
+    .jogo-note span {
+        line-height: 1.5;
     }
-}
-
-/* Animações de entrada otimizadas para mobile */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.jogo-card {
-    animation: fadeInUp 0.6s ease-out;
-}
-
-.jogo-icon {
-    animation-delay: 0.2s;
-}
-
-.jogo-content h2 {
-    animation: fadeInUp 0.6s ease-out 0.1s both;
-}
-
-.jogo-content p {
-    animation: fadeInUp 0.6s ease-out 0.2s both;
-}
-
-.jogo-actions {
-    animation: fadeInUp 0.6s ease-out 0.3s both;
 }
 
 /* Ajustes de performance para animações em mobile */
@@ -543,5 +906,13 @@
     
     .jogo-btn:hover {
         transform: none !important;
+    }
+    
+    .jogo-btn::before {
+        display: none;
+    }
+    
+    .jogo-icon {
+        animation: none;
     }
 }
